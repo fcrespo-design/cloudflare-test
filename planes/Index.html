@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Felipe Crespo — Planes y Precios</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black: #0a0a0a; --white: #fafaf8; --accent: #2563eb;
+  --accent-light: #eff6ff; --muted: #6b7280; --border: rgba(0,0,0,0.08);
+  --gold: #b45309; --gold-light: #fef3c7;
+  --navy: #0f1e3c; --navy-mid: #162444; --navy-border: rgba(255,255,255,0.1);
+}
+body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--black); overflow-x: hidden; }
+
+nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2.5rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(250,250,248,0.94); backdrop-filter: blur(10px); z-index: 20; }
+.logo { font-family: 'DM Serif Display', serif; font-size: 1.15rem; line-height: 1.1; color: var(--navy); }
+.logo span { display: block; font-size: 0.68rem; font-family: 'DM Sans', sans-serif; font-weight: 400; color: var(--muted); letter-spacing: 0.07em; text-transform: uppercase; margin-top: 2px; }
+.nav-back { font-size: 0.85rem; font-weight: 500; color: var(--muted); text-decoration: none; padding: 0.5rem 1.25rem; border-radius: 100px; border: 1px solid var(--border); transition: all 0.2s; cursor: pointer; background: none; }
+.nav-back:hover { border-color: var(--navy); color: var(--navy); }
+
+.pricing-header { max-width: 700px; margin: 0 auto; padding: 4.5rem 2.5rem 3rem; text-align: center; }
+.section-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.65rem; }
+.pricing-header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 1rem; color: var(--navy); }
+.pricing-header h1 em { font-style: italic; color: var(--accent); }
+.pricing-header p { font-size: 0.9375rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+.plans-section { padding: 0 2.5rem 4rem; }
+.plans-inner { max-width: 900px; margin: 0 auto; }
+.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.plan { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 1.75rem; display: flex; flex-direction: column; gap: 1.25rem; cursor: pointer; transition: all 0.2s; position: relative; }
+.plan:hover { border-color: rgba(0,0,0,0.18); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+.plan.featured { border: 2px solid var(--accent); }
+.plan.premium { border: 2px solid var(--gold); background: #fffdf7; }
+.plan.active-plan { box-shadow: 0 0 0 3px var(--accent); }
+.plan.premium.active-plan { box-shadow: 0 0 0 3px var(--gold); }
+.plan-badge { position: absolute; top: -0.75rem; left: 1.25rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.28rem 0.85rem; border-radius: 100px; }
+.plan.featured .plan-badge { background: var(--accent); color: var(--white); }
+.plan.premium .plan-badge { background: var(--gold); color: var(--white); }
+.plan-name { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+.plan.premium .plan-name { color: var(--gold); }
+.plan-price { font-family: 'DM Serif Display', serif; font-size: 2.75rem; line-height: 1; letter-spacing: -0.02em; color: var(--navy); }
+.plan-price sup { font-size: 1.1rem; vertical-align: super; font-family: 'DM Sans', sans-serif; font-weight: 300; }
+.plan-usd { font-size: 0.875rem; font-family: 'DM Sans', sans-serif; font-weight: 300; color: var(--muted); }
+.plan-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+.plan-features { display: flex; flex-direction: column; gap: 0.5rem; }
+.feat { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.8rem; color: var(--navy); line-height: 1.45; }
+.feat-check { flex-shrink: 0; margin-top: 1px; color: var(--muted); }
+.plan-btn { margin-top: auto; padding: 0.8rem; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: all 0.2s; text-align: center; border: 1px solid var(--border); background: transparent; color: var(--navy); }
+.plan.featured .plan-btn { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.plan.premium .plan-btn { background: var(--gold); color: var(--white); border-color: var(--gold); }
+.plan-btn:hover { opacity: 0.82; transform: translateY(-1px); }
+
+.booking-section { background: var(--navy); padding: 5rem 2.5rem; }
+.booking-inner { max-width: 900px; margin: 0 auto; }
+.booking-top { text-align: center; margin-bottom: 3rem; }
+.booking-top .section-label { color: rgba(255,255,255,0.4); }
+.booking-top h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3vw, 2.25rem); letter-spacing: -0.02em; color: var(--white); margin: 0.5rem 0 0.75rem; line-height: 1.2; }
+.booking-top p { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.7; font-weight: 300; max-width: 520px; margin: 0 auto; }
+.filter-card { background: var(--navy-mid); border: 1px solid var(--navy-border); border-radius: 20px; padding: 2rem; max-width: 560px; margin: 0 auto 2.5rem; }
+.selected-plan-tag { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 1.25rem; }
+.selected-plan-tag.basic, .selected-plan-tag.kit { color: #93b4f7; background: rgba(37,99,235,0.2); }
+.selected-plan-tag.premium { color: #f59e0b; background: rgba(180,83,9,0.2); }
+.selected-plan-tag.none { color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); }
+.filter-form { display: flex; flex-direction: column; gap: 0.85rem; }
+.filter-form label { font-size: 0.73rem; font-weight: 500; color: rgba(255,255,255,0.5); display: block; margin-bottom: 0.3rem; letter-spacing: 0.05em; text-transform: uppercase; }
+.filter-form input, .filter-form select { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 0.8rem 1rem; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.875rem; outline: none; transition: border-color 0.2s; -webkit-appearance: none; }
+.filter-form input::placeholder { color: rgba(255,255,255,0.25); }
+.filter-form input:focus, .filter-form select:focus { border-color: rgba(255,255,255,0.35); }
+.filter-form select option { background: #1a2a4a; color: var(--white); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; }
+.filter-submit { width: 100%; padding: 0.9rem; background: var(--white); color: var(--navy); border: none; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s; margin-top: 0.35rem; }
+.filter-submit:hover { background: #93b4f7; color: var(--navy); }
+.disq { display: none; text-align: center; padding: 1rem 0; }
+.disq.show { display: block; }
+.disq-icon { font-size: 2rem; margin-bottom: 0.65rem; }
+.disq h3 { font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: var(--white); margin-bottom: 0.6rem; }
+.disq p { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 1.25rem; max-width: 360px; margin-left: auto; margin-right: auto; }
+.disq-back { background: none; border: 1px solid rgba(255,255,255,0.2); border-radius: 100px; padding: 0.6rem 1.4rem; font-family: 'DM Sans', sans-serif; font-size: 0.825rem; cursor: pointer; color: rgba(255,255,255,0.6); transition: all 0.2s; }
+.disq-back:hover { border-color: rgba(255,255,255,0.5); color: var(--white); }
+.prompt-select { text-align: center; padding: 1rem 0 0; }
+.prompt-select p { font-size: 0.85rem; color: rgba(255,255,255,0.35); font-weight: 300; }
+.calendly-box { display: none; background: var(--white); border-radius: 18px; overflow: hidden; max-width: 700px; margin: 0 auto; }
+.calendly-box.show { display: block; }
+.calendly-inline-widget { min-width: 100% !important; }
+
+footer { border-top: 1px solid var(--border); padding: 1.75rem 2.5rem; max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.footer-logo { font-family: 'DM Serif Display', serif; font-size: 0.95rem; color: var(--navy); }
+footer p { font-size: 0.78rem; color: var(--muted); }
+
+@media (max-width: 700px) {
+  .plans { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  nav, .plans-section, .booking-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .pricing-header { padding: 3.5rem 1.5rem 2.5rem; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Felipe Crespo<span>Método 101 · Meta Ads</span></div>
+  <!-- REEMPLAZA href con la URL de tu landing page en Shopify -->
+  <a class="nav-back" href="/">← Volver</a>
+</nav>
+
+<div class="pricing-header">
+  <div class="section-label">Planes y precios</div>
+  <h1>Elige cómo quieres <em>empezar</em></h1>
+  <p>Selecciona el plan que más se ajusta a tu momento, completa el formulario y agenda tu hora directo en el calendario.</p>
+</div>
+
+<section class="plans-section">
+  <div class="plans-inner">
+    <div class="plans">
+
+      <div class="plan" id="plan-basic" onclick="selectPlan('basic')">
+        <div><div class="plan-name">Asesoría básica</div><div class="plan-price"><sup>$</sup>50 <span class="plan-usd">USD</span></div></div>
+        <div class="plan-desc">Una sesión enfocada para entender dónde está el problema y qué hacer para solucionarlo.</div>
+        <div class="plan-features">
+          <div class="feat"><span class="feat-check">✓</span> Sesión 1-a-1 de 60 min</div>
+          <div class="feat"><span class="feat-check">✓</span> Diagnóstico de tu cuenta</div>
+          <div class="feat"><span class="feat-check">✓</span> Plan de acción concreto</div>
+          <div class="feat"><span class="feat-check">✓</span> Soporte WhatsApp 48h post-sesión</div>
+        </div>
+        <div class="plan-btn">Seleccionar →</div>
+      </div>
+
+      <div class="plan featured" id="plan-kit" onclick="selectPlan('kit')">
+        <div class="plan-badge">Más popular</div>
+        <div><div class="plan-name">Kit completo</div><div class="plan-price"><sup>$</sup>250 <span class="plan-usd">USD</span></div></div>
+        <div class="plan-desc">Todo lo que necesitas para lanzar campañas que funcionen, con el anuncio listo para publicar.</div>
+        <div class="plan-features">
+          <div class="feat"><span class="feat-check" style="color:#2563eb">✓</span> Todo lo del plan básico</div>
+          <div class="feat"><span class="feat-check" style="color:#2563eb">✓</span> Estrategia de campaña personalizada</div>
+          <div class="feat"><span class="feat-check" style="color:#2563eb">✓</span> Anuncio grabado y editado</div>
+          <div class="feat"><span class="feat-check" style="color:#2563eb">✓</span> Copy y segmentación de audiencias</div>
+          <div class="feat"><span class="feat-check" style="color:#2563eb">✓</span> Seguimiento 2 semanas post-lanzamiento</div>
+        </div>
+        <div class="plan-btn">Seleccionar →</div>
+      </div>
+
+      <div class="plan premium" id="plan-premium" onclick="selectPlan('premium')">
+        <div class="plan-badge">Todo incluido</div>
+        <div><div class="plan-name">Gestión mensual</div><div class="plan-price"><sup>$</sup>500 <span class="plan-usd">USD</span></div></div>
+        <div class="plan-desc">Me encargo de todo: estrategia, creativos y optimización continua. Tú te enfocas en tu negocio.</div>
+        <div class="plan-features">
+          <div class="feat"><span class="feat-check" style="color:#b45309">✓</span> Todo lo del kit completo</div>
+          <div class="feat"><span class="feat-check" style="color:#b45309">✓</span> Gestión activa de campañas (1 mes)</div>
+          <div class="feat"><span class="feat-check" style="color:#b45309">✓</span> Hasta 3 anuncios grabados y editados</div>
+          <div class="feat"><span class="feat-check" style="color:#b45309">✓</span> Optimización semanal de presupuesto</div>
+          <div class="feat"><span class="feat-check" style="color:#b45309">✓</span> Reporte de resultados al cierre</div>
+          <div class="feat"><span class="feat-check" style="color:#b45309">✓</span> Canal directo de comunicación</div>
+        </div>
+        <div class="plan-btn">Seleccionar →</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="booking-section" id="booking">
+  <div class="booking-inner">
+    <div class="booking-top">
+      <div class="section-label">Agendar sesión</div>
+      <h2>Un paso antes de elegir tu horario</h2>
+      <p>Para asegurarme de que puedo ayudarte de verdad, necesito saber un poco más sobre tu negocio.</p>
+    </div>
+
+    <div class="filter-card" id="filterCard">
+      <div id="filterView">
+        <div class="selected-plan-tag none" id="planTag">Selecciona un plan arriba</div>
+        <div class="filter-form">
+          <div class="two-col">
+            <div><label>Nombre</label><input type="text" id="fname" placeholder="Tu nombre" /></div>
+            <div><label>Negocio</label><input type="text" id="fbusiness" placeholder="Nombre del negocio" /></div>
+          </div>
+          <div><label>WhatsApp / Email</label><input type="text" id="fcontact" placeholder="+56 9 1234 5678 o correo" /></div>
+          <div>
+            <label>¿Tienes perfil activo en Facebook o Instagram?</label>
+            <select id="fprofile">
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="yes">Sí, tengo perfil activo</option>
+              <option value="no">No, todavía no</option>
+            </select>
+          </div>
+          <div>
+            <label>¿Has invertido en Meta Ads antes?</label>
+            <select id="fexperience">
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="yes_good">Sí, con buenos resultados</option>
+              <option value="yes_bad">Sí, pero sin buenos resultados</option>
+              <option value="no">No, es la primera vez</option>
+            </select>
+          </div>
+          <div>
+            <label>¿Puedes invertir en este plan?</label>
+            <select id="fbudget">
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="yes">Sí, estoy listo/a</option>
+              <option value="maybe">Depende de lo que me ofrezcan</option>
+              <option value="no">Honestamente, no tengo ese presupuesto ahora</option>
+            </select>
+          </div>
+          <button class="filter-submit" onclick="evaluateFilter()">Ver horarios disponibles →</button>
+        </div>
+      </div>
+      <div class="disq" id="disqView">
+        <div class="disq-icon">👋</div>
+        <h3>Gracias por tu honestidad</h3>
+        <p>En este momento mis servicios pueden no ser el fit correcto. Si tu situación cambia, estaré feliz de ayudarte. Sígueme en Instagram para tips gratuitos.</p>
+        <button class="disq-back" onclick="resetForm()">← Volver</button>
+      </div>
+    </div>
+
+    <div class="prompt-select" id="promptSelect">
+      <p>Selecciona un plan arriba y completa el formulario para ver los horarios disponibles.</p>
+    </div>
+
+    <div class="calendly-box" id="calendlyBox">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/fcrespo-101solutions/nueva-reunion" style="min-width:320px;height:700px;"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Felipe Crespo</div>
+  <p>© 2026 · Método 101 · Meta Ads</p>
+</footer>
+
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+  const planMeta = {
+    basic:   { label: '✦ Asesoría básica — $50 USD', cls: 'basic' },
+    kit:     { label: '✦ Kit completo — $250 USD',    cls: 'kit' },
+    premium: { label: '✦ Gestión mensual — $500 USD', cls: 'premium' }
+  };
+  let currentPlan = null;
+
+  function selectPlan(plan) {
+    currentPlan = plan;
+    ['basic','kit','premium'].forEach(p => document.getElementById('plan-'+p).classList.remove('active-plan'));
+    document.getElementById('plan-'+plan).classList.add('active-plan');
+    const tag = document.getElementById('planTag');
+    tag.textContent = planMeta[plan].label;
+    tag.className = 'selected-plan-tag ' + planMeta[plan].cls;
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function evaluateFilter() {
+    if (!currentPlan) { alert('Por favor selecciona un plan primero.'); return; }
+    const name    = document.getElementById('fname').value.trim();
+    const contact = document.getElementById('fcontact').value.trim();
+    const profile = document.getElementById('fprofile').value;
+    const exp     = document.getElementById('fexperience').value;
+    const budget  = document.getElementById('fbudget').value;
+    if (!name || !contact || !profile || !exp || !budget) {
+      alert('Por favor completa todos los campos antes de continuar.');
+      return;
+    }
+    if (budget === 'no') {
+      document.getElementById('filterView').style.display = 'none';
+      document.getElementById('disqView').classList.add('show');
+      document.getElementById('promptSelect').style.display = 'none';
+      return;
+    }
+    document.getElementById('filterCard').style.display = 'none';
+    document.getElementById('promptSelect').style.display = 'none';
+    document.getElementById('calendlyBox').classList.add('show');
+  }
+
+  function resetForm() {
+    currentPlan = null;
+    document.getElementById('filterView').style.display = 'block';
+    document.getElementById('disqView').classList.remove('show');
+    document.getElementById('filterCard').style.display = 'block';
+    document.getElementById('planTag').textContent = 'Selecciona un plan arriba';
+    document.getElementById('planTag').className = 'selected-plan-tag none';
+    document.getElementById('promptSelect').style.display = 'block';
+    document.getElementById('calendlyBox').classList.remove('show');
+    ['basic','kit','premium'].forEach(p => document.getElementById('plan-'+p).classList.remove('active-plan'));
+  }
+</script>
+</body>
+</html>
