@@ -1,1 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Sesión agendada! — Felipe Crespo</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --white: #fafaf8; --accent: #2563eb; --accent-light: #eff6ff;
+  --muted: #6b7280; --border: rgba(0,0,0,0.08); --navy: #0f1e3c;
+}
+body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--navy); overflow-x: hidden; min-height: 100vh; }
 
+nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2.5rem; border-bottom: 1px solid var(--border); background: var(--white); }
+.logo { font-family: 'DM Serif Display', serif; font-size: 1.15rem; line-height: 1.1; color: var(--navy); }
+.logo span { display: block; font-size: 0.68rem; font-family: 'DM Sans', sans-serif; font-weight: 400; color: var(--muted); letter-spacing: 0.07em; text-transform: uppercase; margin-top: 2px; }
+
+/* HERO CONFIRM */
+.confirm-hero { background: var(--navy); padding: 4rem 2.5rem; text-align: center; }
+.confirm-hero-inner { max-width: 600px; margin: 0 auto; }
+.confirm-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.85); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
+.checkmark { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.75rem; margin: 0 auto 1.5rem; }
+.confirm-hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 2.75rem); letter-spacing: -0.025em; color: var(--white); margin-bottom: 1rem; line-height: 1.15; }
+.confirm-hero h1 em { font-style: italic; color: #93b4f7; }
+.confirm-hero p { font-size: 0.9375rem; color: rgba(255,255,255,0.55); line-height: 1.7; font-weight: 300; max-width: 480px; margin: 0 auto; }
+
+/* CALENDAR BLOCK */
+.calendar-block { max-width: 560px; margin: 0 auto; padding: 3rem 2.5rem 0; text-align: center; }
+.calendar-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 1.75rem 2rem; display: flex; align-items: center; gap: 1.25rem; text-align: left; }
+.cal-icon-wrap { width: 52px; height: 52px; border-radius: 14px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+.cal-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+.cal-value { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--navy); line-height: 1.2; }
+.cal-sub { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; font-weight: 300; }
+
+/* SECTIONS */
+.section { max-width: 560px; margin: 0 auto; padding: 3rem 2.5rem 0; }
+.section-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.65rem; }
+.section h2 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; letter-spacing: -0.02em; color: var(--navy); margin-bottom: 1.5rem; line-height: 1.2; }
+
+/* TAREA */
+.tarea-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.tarea-item { display: flex; align-items: flex-start; gap: 1rem; background: #f9f9f7; border: 1px solid var(--border); border-radius: 14px; padding: 1rem 1.25rem; }
+.tarea-num { width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: var(--white); font-size: 0.75rem; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.tarea-text { font-size: 0.875rem; color: var(--navy); line-height: 1.6; }
+.tarea-text strong { font-weight: 500; display: block; margin-bottom: 0.15rem; }
+.tarea-text span { color: var(--muted); font-weight: 300; font-size: 0.825rem; }
+
+/* INSTAGRAM */
+.ig-card { background: var(--navy); border-radius: 20px; padding: 2rem; display: flex; align-items: center; gap: 1.5rem; }
+.ig-avatar { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #e8f0fe, #c7d7f8); display: flex; align-items: center; justify-content: center; font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--accent); flex-shrink: 0; border: 2px solid rgba(255,255,255,0.1); }
+.ig-info { flex: 1; }
+.ig-info p { font-size: 0.8rem; color: rgba(255,255,255,0.5); font-weight: 300; margin-bottom: 0.25rem; }
+.ig-info strong { font-size: 1rem; color: var(--white); font-weight: 500; display: block; margin-bottom: 0.6rem; }
+.ig-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--white); color: var(--navy); font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 500; padding: 0.5rem 1.1rem; border-radius: 100px; text-decoration: none; transition: all 0.2s; }
+.ig-btn:hover { background: #eff6ff; }
+
+/* FOOTER */
+.page-footer { max-width: 560px; margin: 0 auto; padding: 3rem 2.5rem 2rem; text-align: center; }
+.page-footer p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+footer { border-top: 1px solid var(--border); padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; }
+.footer-logo { font-family: 'DM Serif Display', serif; font-size: 0.95rem; color: var(--navy); }
+footer p { font-size: 0.78rem; color: var(--muted); }
+
+@media (max-width: 600px) {
+  nav, footer { padding: 1.1rem 1.5rem; }
+  .confirm-hero { padding: 3rem 1.5rem; }
+  .section, .calendar-block { padding: 2.5rem 1.5rem 0; }
+  .ig-card { flex-direction: column; text-align: center; }
+  .page-footer { padding: 2.5rem 1.5rem 1.5rem; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Felipe Crespo<span>Método 101 · Meta Ads</span></div>
+</nav>
+
+<div class="confirm-hero">
+  <div class="confirm-hero-inner">
+    <div class="confirm-badge">✦ Sesión confirmada</div>
+    <div class="checkmark">✓</div>
+    <h1>¡Nos vemos <em>pronto</em>!</h1>
+    <p>Tu sesión quedó agendada. Revisa tu correo — Calendly ya te envió la confirmación con el link de la videollamada.</p>
+  </div>
+</div>
+
+<div class="calendar-block">
+  <div class="calendar-card">
+    <div class="cal-icon-wrap">📅</div>
+    <div>
+      <div class="cal-label">Tu sesión</div>
+      <div class="cal-value">Revisa tu correo</div>
+      <div class="cal-sub">Calendly te envió todos los detalles y el link de acceso</div>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-label">Antes de la sesión</div>
+  <h2>Llega preparado y aprovechamos el 100% del tiempo</h2>
+  <div class="tarea-list">
+    <div class="tarea-item">
+      <div class="tarea-num">1</div>
+      <div class="tarea-text">
+        <strong>Ten listo el acceso a tu cuenta de Meta</strong>
+        <span>Entra a business.facebook.com y confirma que puedes ver tu Administrador de Anuncios. Si no tienes cuenta, créala antes de la sesión.</span>
+      </div>
+    </div>
+    <div class="tarea-item">
+      <div class="tarea-num">2</div>
+      <div class="tarea-text">
+        <strong>Define el producto o servicio que quieres promocionar</strong>
+        <span>Elige uno solo — el más rentable o el que más quieres vender. Trabajaremos enfocados en ese.</span>
+      </div>
+    </div>
+    <div class="tarea-item">
+      <div class="tarea-num">3</div>
+      <div class="tarea-text">
+        <strong>Ten claro a quién le vendes</strong>
+        <span>Edad, ubicación, intereses de tu cliente ideal. Mientras más específico, mejor estrategia podemos construir juntos.</span>
+      </div>
+    </div>
+    <div class="tarea-item">
+      <div class="tarea-num">4</div>
+      <div class="tarea-text">
+        <strong>Anota tus 3 principales dudas o problemas con Meta Ads</strong>
+        <span>Así vamos directo al punto y no perdemos tiempo en cosas que no te afectan.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-bottom: 3rem;">
+  <div class="section-label">Instagram</div>
+  <h2>Sígueme para ver más contenido como esto</h2>
+  <div class="ig-card">
+    <div class="ig-avatar">FC</div>
+    <div class="ig-info">
+      <p>Contenido diario sobre Meta Ads, emprendimiento y marketing digital</p>
+      <strong>@pipecrespos</strong>
+      <a class="ig-btn" href="https://instagram.com/pipecrespos" target="_blank">Seguir en Instagram →</a>
+    </div>
+  </div>
+</section>
+
+<div class="page-footer">
+  <p>¿Tienes alguna duda antes de la sesión? Escríbeme directo por Instagram y te respondo a la brevedad.</p>
+</div>
+
+<footer>
+  <div class="footer-logo">Felipe Crespo</div>
+  <p>© 2026 · Método 101 · Meta Ads</p>
+</footer>
+
+</body>
+</html>
