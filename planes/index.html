@@ -59,22 +59,66 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .plan.premium .plan-btn { background: var(--gold); color: var(--white); border-color: var(--gold); }
 .plan-btn:hover { opacity: 0.82; transform: translateY(-1px); }
 
-/* BOOKING — NAVY — sin filtro, directo al Calendly */
+/* BOOKING */
 .booking-section { background: var(--navy); padding: 5rem 2.5rem; }
 .booking-inner { max-width: 900px; margin: 0 auto; }
 .booking-top { text-align: center; margin-bottom: 2.5rem; }
 .booking-top .section-label { color: rgba(255,255,255,0.4); }
 .booking-top h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3vw, 2.25rem); letter-spacing: -0.02em; color: var(--white); margin: 0.5rem 0 0.75rem; line-height: 1.2; }
 .booking-top p { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.7; font-weight: 300; max-width: 520px; margin: 0 auto; }
-
 .prompt-select { text-align: center; padding: 2rem 0; }
 .prompt-select p { font-size: 0.9rem; color: rgba(255,255,255,0.4); font-weight: 300; }
 .prompt-arrow { font-size: 1.5rem; display: block; margin-top: 0.5rem; animation: bounce 1.5s infinite; }
 @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
-
 .calendly-box { display: none; background: var(--white); border-radius: 18px; overflow: hidden; max-width: 700px; margin: 0 auto; }
 .calendly-box.show { display: block; }
 .calendly-inline-widget { min-width: 100% !important; }
+
+/* POPUP */
+.popup-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.65); z-index: 100;
+  align-items: center; justify-content: center;
+  padding: 1.5rem;
+}
+.popup-overlay.open { display: flex; }
+.popup {
+  background: var(--white); border-radius: 24px;
+  width: min(480px, 100%); padding: 2.5rem;
+  position: relative; animation: popIn 0.3s ease;
+}
+@keyframes popIn { from { transform: scale(0.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.popup-close { position: absolute; top: 1.1rem; right: 1.1rem; background: none; border: none; font-size: 1.1rem; cursor: pointer; color: var(--muted); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+.popup-close:hover { background: var(--border); }
+.popup-gift { font-size: 2.5rem; margin-bottom: 1rem; text-align: center; }
+.popup h3 { font-family: 'DM Serif Display', serif; font-size: 1.6rem; letter-spacing: -0.02em; color: var(--navy); margin-bottom: 0.65rem; line-height: 1.2; text-align: center; }
+.popup h3 em { font-style: italic; color: var(--accent); }
+.popup-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.65; font-weight: 300; text-align: center; margin-bottom: 1.5rem; }
+.popup-desc strong { color: var(--navy); font-weight: 500; }
+.popup-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--gold-light); color: var(--gold); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.3rem 0.85rem; border-radius: 100px; margin-bottom: 1.5rem; }
+.popup-form { display: flex; flex-direction: column; gap: 0.75rem; }
+.popup-form input {
+  width: 100%; background: var(--white); border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 10px; padding: 0.85rem 1rem; color: var(--navy);
+  font-family: 'DM Sans', sans-serif; font-size: 0.875rem; outline: none;
+  transition: border-color 0.2s;
+}
+.popup-form input::placeholder { color: var(--muted); }
+.popup-form input:focus { border-color: var(--accent); }
+.popup-submit {
+  width: 100%; padding: 0.9rem; background: var(--navy); color: var(--white);
+  border: none; border-radius: 100px; font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s;
+}
+.popup-submit:hover { background: var(--accent); }
+.popup-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+.popup-skip { text-align: center; margin-top: 0.75rem; }
+.popup-skip button { background: none; border: none; font-size: 0.78rem; color: var(--muted); cursor: pointer; text-decoration: underline; font-family: 'DM Sans', sans-serif; }
+.popup-success { display: none; text-align: center; padding: 1rem 0; }
+.popup-success.show { display: block; }
+.popup-success-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.popup-success h4 { font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: var(--navy); margin-bottom: 0.5rem; }
+.popup-success p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
 
 footer { border-top: 1px solid var(--border); padding: 1.75rem 2.5rem; max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
 .footer-logo { font-family: 'DM Serif Display', serif; font-size: 0.95rem; color: var(--navy); }
@@ -85,6 +129,7 @@ footer p { font-size: 0.78rem; color: var(--muted); }
   nav, .plans-section, .booking-section { padding-left: 1.5rem; padding-right: 1.5rem; }
   .pricing-header { padding: 3.5rem 1.5rem 2.5rem; }
   footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  .popup { padding: 2rem 1.5rem; }
 }
 </style>
 </head>
@@ -157,12 +202,10 @@ footer p { font-size: 0.78rem; color: var(--muted); }
       <h2>Elige tu horario</h2>
       <p>Selecciona un plan arriba para ver el calendario disponible.</p>
     </div>
-
     <div class="prompt-select" id="promptSelect">
       <p>👆 Selecciona un plan para continuar</p>
       <span class="prompt-arrow">↑</span>
     </div>
-
     <div class="calendly-box" id="calendlyBox">
       <div class="calendly-inline-widget" data-url="https://calendly.com/fcrespo-101solutions/nueva-reunion" style="min-width:320px;height:700px;"></div>
     </div>
@@ -174,9 +217,118 @@ footer p { font-size: 0.78rem; color: var(--muted); }
   <p>© 2026 · Método 101 · Meta Ads</p>
 </footer>
 
+<!-- POPUP -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopup()">✕</button>
+
+    <div id="popupForm">
+      <div class="popup-gift">🎁</div>
+      <div style="text-align:center;margin-bottom:1rem;">
+        <span class="popup-badge">✦ Oferta exclusiva</span>
+      </div>
+      <h3>Agenda ahora y llévate un <em>PDF de anuncios ganadores</em> totalmente gratis</h3>
+      <p class="popup-desc">Válido en cualquiera de los planes. Deja tu correo y te lo enviamos apenas confirmes tu sesión.</p>
+      <div class="popup-form">
+        <input type="text" id="popupName" placeholder="Tu nombre" />
+        <input type="email" id="popupEmail" placeholder="Tu correo electrónico" required />
+        <button class="popup-submit" id="popupSubmitBtn" onclick="submitPopup()">Quiero el PDF gratis →</button>
+      </div>
+      <div class="popup-skip">
+        <button onclick="closePopup()">No gracias, agendar sin el PDF</button>
+      </div>
+    </div>
+
+    <div class="popup-success" id="popupSuccess">
+      <div class="popup-success-icon">✦</div>
+      <h4>¡Listo! Ya tienes el PDF</h4>
+      <p>Te lo enviamos en cuanto confirmes tu sesión. Ahora elige tu horario.</p>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
+  const WORKER_URL = 'https://mailerlite-worker.fcrespo.workers.dev';
   let currentPlan = null;
+  let popupShown = false;
+  let scrolledToBooking = false;
+  let timeOnPage = 0;
+  let popupTimer = null;
+
+  // Tiempo en página
+  const pageTimer = setInterval(() => {
+    timeOnPage++;
+    checkPopupConditions();
+  }, 1000);
+
+  // Detectar scroll hasta sección booking
+  const bookingSection = document.getElementById('booking');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        scrolledToBooking = true;
+        checkPopupConditions();
+      }
+    });
+  }, { threshold: 0.3 });
+  observer.observe(bookingSection);
+
+  function checkPopupConditions() {
+    if (!popupShown && scrolledToBooking && timeOnPage >= 30) {
+      // Esperar entre 30-40 segundos aleatoriamente
+      if (!popupTimer) {
+        const delay = Math.floor(Math.random() * 10) * 1000; // 0-10s extra
+        popupTimer = setTimeout(openPopup, delay);
+      }
+    }
+  }
+
+  function openPopup() {
+    if (popupShown) return;
+    popupShown = true;
+    document.getElementById('popupOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    clearInterval(pageTimer);
+  }
+
+  function closePopup() {
+    document.getElementById('popupOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  async function submitPopup() {
+    const name = document.getElementById('popupName').value.trim();
+    const email = document.getElementById('popupEmail').value.trim();
+
+    if (!email) { alert('Por favor ingresa tu correo.'); return; }
+
+    const btn = document.getElementById('popupSubmitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, name })
+      });
+
+      if (res.ok) {
+        document.getElementById('popupForm').style.display = 'none';
+        document.getElementById('popupSuccess').classList.add('show');
+        setTimeout(closePopup, 3000);
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Quiero el PDF gratis →';
+        alert('Hubo un error. Por favor intenta de nuevo.');
+      }
+    } catch(e) {
+      btn.disabled = false;
+      btn.textContent = 'Quiero el PDF gratis →';
+      alert('Hubo un error de conexión. Por favor intenta de nuevo.');
+    }
+  }
 
   function selectPlan(plan) {
     currentPlan = plan;
