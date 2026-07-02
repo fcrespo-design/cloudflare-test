@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planes — Felipe Crespo | Método 101</title>
+<meta name="description" content="Consulta Estratégica desde $49 USD o Media Buying gestionado desde $300 USD con garantía de 30 días. Elige tu punto de partida y agenda directo.">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="canonical" href="https://felipecrespo.cl/planes">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ivory: #F3EEE4; --panel: #ECE6D8; --surface: #FFFFFF;
+  --ink: #0D0D0D; --red: #E6332B; --red-dark: #c92a22; --red-light: #FBEAE8;
+  --muted: #6b6b63; --border: rgba(13,13,13,0.1);
+}
+body { font-family: 'DM Sans', sans-serif; background: var(--ivory); color: var(--ink); overflow-x: hidden; }
+
+nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2.5rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(243,238,228,0.94); backdrop-filter: blur(10px); z-index: 20; }
+.logo { font-family: 'Archivo Black', sans-serif; font-size: 1rem; line-height: 1.1; color: var(--ink); text-transform: uppercase; letter-spacing: -0.01em; }
+.logo span { display: block; font-size: 0.62rem; font-family: 'JetBrains Mono', monospace; font-weight: 500; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
+.nav-back { font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; font-weight: 500; color: var(--muted); text-decoration: none; padding: 0.55rem 1.25rem; border-radius: 8px; border: 1px solid var(--border); transition: all 0.2s; background: none; cursor: pointer; }
+.nav-back:hover { border-color: var(--ink); color: var(--ink); }
+
+.pricing-header { max-width: 700px; margin: 0 auto; padding: 4.5rem 2.5rem 2.5rem; text-align: center; }
+.section-label { font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.65rem; }
+.pricing-header h1 { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: clamp(1.9rem, 3.6vw, 2.75rem); letter-spacing: -0.01em; line-height: 1.18; margin-bottom: 1rem; color: var(--ink); }
+.pricing-header h1 em { font-style: normal; color: var(--red); }
+.pricing-header p { font-size: 0.9375rem; color: var(--muted); line-height: 1.7; font-weight: 400; }
+
+/* Consulta — entry point */
+.consulta-section { max-width: 900px; margin: 0 auto; padding: 0 2.5rem 4rem; scroll-margin-top: 90px; }
+.consulta-card { background: var(--ink); border-radius: 20px; padding: 2.25rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; position: relative; }
+.consulta-badge { position: absolute; top: -0.75rem; left: 1.75rem; font-size: 0.68rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.28rem 0.85rem; border-radius: 100px; background: var(--red); color: var(--ivory); }
+.consulta-name { font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--red); margin-bottom: 0.6rem; }
+.consulta-title { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: 1.4rem; color: var(--ivory); margin-bottom: 0.75rem; line-height: 1.25; }
+.consulta-desc { color: rgba(243,238,228,0.65); font-size: 0.85rem; line-height: 1.7; font-weight: 400; margin-bottom: 1.25rem; max-width: 460px; }
+.consulta-features { display: flex; flex-direction: column; gap: 0.45rem; }
+.consulta-feat { font-size: 0.8rem; color: rgba(243,238,228,0.85); display: flex; align-items: flex-start; gap: 0.5rem; }
+.consulta-price-block { text-align: center; }
+.consulta-price { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: 2.5rem; line-height: 1; color: var(--ivory); }
+.consulta-price sup { font-size: 1rem; vertical-align: super; font-family: 'DM Sans', sans-serif; font-weight: 400; }
+.consulta-usd { display: block; font-size: 0.78rem; font-family: 'DM Sans', sans-serif; font-weight: 400; color: rgba(243,238,228,0.5); margin-bottom: 1.1rem; }
+.consulta-btn { padding: 0.8rem 1.5rem; background: var(--red); color: var(--ivory); border: none; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 600; cursor: pointer; text-align: center; white-space: nowrap; transition: all 0.2s; }
+.consulta-btn:hover { background: var(--red-dark); }
+
+.section-divider { max-width: 900px; margin: 3rem auto 1.5rem; padding: 0 2.5rem; display: flex; align-items: center; gap: 1rem; scroll-margin-top: 90px; }
+.section-divider::before, .section-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.section-divider span { font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); white-space: nowrap; }
+
+.pauta-note { max-width: 900px; margin: 0 auto; padding: 0 2.5rem 1.5rem; scroll-margin-top: 90px; }
+.pauta-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--red-light); border: 1px solid rgba(230,51,43,0.18); color: var(--red-dark); font-size: 0.8rem; font-family: 'DM Sans', sans-serif; font-weight: 400; padding: 0.5rem 1rem; border-radius: 100px; }
+.pauta-badge strong { font-weight: 600; }
+
+.plans-section { padding: 0 2.5rem 3rem; }
+.plans-inner { max-width: 900px; margin: 0 auto; }
+.plans { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+
+.plan { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 1.75rem; display: flex; flex-direction: column; gap: 1.25rem; cursor: pointer; transition: all 0.2s; position: relative; }
+.plan:hover { border-color: rgba(13,13,13,0.2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,13,13,0.08); }
+.plan.featured { border: 2px solid var(--red); }
+.plan.active-plan { box-shadow: 0 0 0 3px var(--ink); }
+.plan.featured.active-plan { box-shadow: 0 0 0 3px var(--red); }
+
+.plan-badge { position: absolute; top: -0.75rem; left: 1.25rem; font-size: 0.68rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.28rem 0.85rem; border-radius: 100px; background: var(--red); color: var(--ivory); }
+
+.plan-name { font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+.plan.featured .plan-name { color: var(--red); }
+.plan-price { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: 2.6rem; line-height: 1; letter-spacing: -0.01em; color: var(--ink); }
+.plan-price sup { font-size: 1.1rem; vertical-align: super; font-family: 'DM Sans', sans-serif; font-weight: 400; }
+.plan-usd { font-size: 0.875rem; font-family: 'DM Sans', sans-serif; font-weight: 400; color: var(--muted); }
+.plan-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; font-weight: 400; }
+
+.plan-features { display: flex; flex-direction: column; gap: 0.5rem; }
+.feat { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.8rem; color: var(--ink); line-height: 1.45; }
+.feat-check { flex-shrink: 0; margin-top: 1px; color: var(--red); }
+
+.plan-pauta { margin-top: auto; padding: 0.65rem 0.85rem; background: var(--red-light); border-radius: 8px; font-size: 0.75rem; color: var(--red-dark); font-weight: 400; }
+
+.plan-btn { padding: 0.8rem; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; border: 1px solid var(--border); background: transparent; color: var(--ink); }
+.plan.featured .plan-btn { background: var(--red); color: var(--ivory); border-color: var(--red); }
+.plan:not(.featured) .plan-btn { background: var(--ink); color: var(--ivory); border-color: var(--ink); }
+.plan-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+.garantia-section { background: var(--ink); border-top: 2px solid var(--red); border-bottom: 2px solid var(--red); padding: 1.5rem 2.5rem; }
+.garantia-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; gap: 1.25rem; }
+.garantia-icon { font-size: 2rem; flex-shrink: 0; }
+.garantia-text p { font-size: 0.875rem; color: rgba(243,238,228,0.85); line-height: 1.6; font-weight: 400; }
+.garantia-text p strong { font-weight: 600; color: var(--red); }
+
+.booking-section { background: var(--ink); padding: 5rem 2.5rem; }
+.booking-inner { max-width: 900px; margin: 0 auto; }
+.booking-top { text-align: center; margin-bottom: 2.5rem; }
+.booking-top .section-label { color: rgba(243,238,228,0.4); }
+.booking-top h2 { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: clamp(1.4rem, 2.6vw, 2rem); letter-spacing: -0.01em; color: var(--ivory); margin: 0.5rem 0 0.75rem; line-height: 1.25; }
+.booking-top p { font-size: 0.9rem; color: rgba(243,238,228,0.55); line-height: 1.7; font-weight: 400; max-width: 520px; margin: 0 auto; }
+
+.prompt-select { text-align: center; padding: 2rem 0; }
+.prompt-select p { font-size: 0.9rem; color: rgba(243,238,228,0.4); font-weight: 400; }
+.prompt-arrow { font-size: 1.5rem; display: block; margin-top: 0.5rem; animation: bounce 1.5s infinite; }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+.selected-plan-tag { display: none; align-items: center; gap: 0.4rem; font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 100px; margin: 0 auto 1.5rem; width: fit-content; }
+.selected-plan-tag.show { display: inline-flex; }
+.selected-plan-tag.basic { color: rgba(243,238,228,0.85); background: rgba(243,238,228,0.12); }
+.selected-plan-tag.consulta, .selected-plan-tag.premium { color: var(--red); background: rgba(230,51,43,0.18); }
+
+.calendly-box { display: none; background: var(--surface); border-radius: 18px; overflow: hidden; max-width: 700px; margin: 0 auto; }
+.calendly-box.show { display: block; }
+.calendly-inline-widget { min-width: 100% !important; }
+
+.popup-overlay { display: none; position: fixed; inset: 0; background: rgba(13,13,13,0.7); z-index: 100; align-items: center; justify-content: center; padding: 1.5rem; }
+.popup-overlay.open { display: flex; }
+.popup { background: var(--surface); border-radius: 22px; width: min(480px, 100%); padding: 2.5rem; position: relative; animation: popIn 0.3s ease; }
+@keyframes popIn { from{transform:scale(0.92);opacity:0} to{transform:scale(1);opacity:1} }
+.popup-close { position: absolute; top: 1.1rem; right: 1.1rem; background: none; border: none; font-size: 1.1rem; cursor: pointer; color: var(--muted); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.popup-close:hover { background: var(--border); }
+.popup-gift { font-size: 2.5rem; margin-bottom: 1rem; text-align: center; }
+.popup-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--red-light); color: var(--red-dark); font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.3rem 0.85rem; border-radius: 100px; margin-bottom: 1rem; }
+.popup h3 { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: 1.45rem; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 0.65rem; line-height: 1.25; text-align: center; }
+.popup h3 em { font-style: normal; color: var(--red); }
+.popup-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.65; font-weight: 400; text-align: center; margin-bottom: 1.5rem; }
+.popup-form { display: flex; flex-direction: column; gap: 0.75rem; }
+.popup-form input { width: 100%; background: var(--surface); border: 1px solid rgba(13,13,13,0.15); border-radius: 10px; padding: 0.85rem 1rem; color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 0.875rem; outline: none; transition: border-color 0.2s; }
+.popup-form input::placeholder { color: var(--muted); }
+.popup-form input:focus { border-color: var(--red); }
+.popup-submit { width: 100%; padding: 0.9rem; background: var(--ink); color: var(--ivory); border: none; border-radius: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.popup-submit:hover { background: var(--red); }
+.popup-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+.popup-skip { text-align: center; margin-top: 0.75rem; }
+.popup-skip button { background: none; border: none; font-size: 0.78rem; color: var(--muted); cursor: pointer; text-decoration: underline; font-family: 'DM Sans', sans-serif; }
+.popup-success { display: none; text-align: center; padding: 1rem 0; }
+.popup-success.show { display: block; }
+.popup-success-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.popup-success h4 { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: 1.25rem; color: var(--ink); margin-bottom: 0.5rem; }
+.popup-success p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; font-weight: 400; }
+
+footer { border-top: 1px solid var(--border); padding: 1.75rem 2.5rem; max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.footer-logo { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: 0.85rem; color: var(--ink); }
+footer p { font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; color: var(--muted); }
+
+@media (max-width: 700px) {
+  .plans { grid-template-columns: 1fr; }
+  .consulta-card { grid-template-columns: 1fr; text-align: center; }
+  .consulta-features { align-items: center; }
+  .consulta-desc { max-width: none; }
+  nav, .plans-section, .booking-section, .garantia-section, .pauta-note, .consulta-section, .section-divider { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .pricing-header { padding-left: 1.5rem; padding-right: 1.5rem; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  .garantia-inner { flex-direction: column; gap: 0.75rem; }
+  .popup { padding: 2rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Felipe Crespo<span>Método 101 · Media Buying</span></div>
+  <a class="nav-back" href="/">← Volver</a>
+</nav>
+
+<div class="pricing-header">
+  <div class="section-label">Planes y precios</div>
+  <h1>Yo manejo tus anuncios.<br>Tú eliges <em>cuánto avanzamos.</em></h1>
+  <p>Media Buying gestionado de principio a fin, con garantía de 30 días. Y si aún no estás listo para invertir en anuncios, más abajo está la Consulta Estratégica para partir con un diagnóstico.</p>
+</div>
+
+<div class="pauta-note" id="media-buying">
+  <span class="pauta-badge">ℹ️ Ambos planes requieren un <strong>presupuesto de pauta mínimo de $5 USD/día</strong> pagado directamente a Meta — no incluido en el precio del plan.</span>
+</div>
+
+<section class="plans-section">
+  <div class="plans-inner">
+    <div class="plans">
+
+      <div class="plan featured" id="plan-pro" onclick="selectPlan('pro')">
+        <div class="plan-badge">Recomendado</div>
+        <div>
+          <div class="plan-name">Plan Pro 3 meses</div>
+          <div class="plan-price"><sup>$</sup>1.000 <span class="plan-usd">USD</span></div>
+        </div>
+        <div class="plan-desc">Setup completo + 3 campañas mensuales. La opción ideal para resultados sostenidos.</div>
+        <div class="plan-features">
+          <div class="feat"><span class="feat-check">✓</span> Setup completo de Meta Business</div>
+          <div class="feat"><span class="feat-check">✓</span> 3 campañas optimizadas (1 por mes)</div>
+          <div class="feat"><span class="feat-check">✓</span> Anuncios estáticos cada mes</div>
+          <div class="feat"><span class="feat-check">✓</span> Seguimiento activo 3 meses</div>
+          <div class="feat"><span class="feat-check">✓</span> Reporte mensual de resultados</div>
+          <div class="feat"><span class="feat-check">✓</span> Garantía 30 días</div>
+        </div>
+        <div class="plan-pauta">+ Pauta mínima $5 USD/día a Meta</div>
+        <div class="plan-btn">Agendar →</div>
+      </div>
+
+      <div class="plan" id="plan-basic" onclick="selectPlan('basic')">
+        <div>
+          <div class="plan-name">Plan Campaña</div>
+          <div class="plan-price"><sup>$</sup>300 <span class="plan-usd">USD</span></div>
+        </div>
+        <div class="plan-desc">Para negocios que ya tienen Meta Business configurado y solo necesitan correr anuncios.</div>
+        <div class="plan-features">
+          <div class="feat"><span class="feat-check">✓</span> Campaña optimizada en Meta Ads</div>
+          <div class="feat"><span class="feat-check">✓</span> Anuncios estáticos creados por mí</div>
+          <div class="feat"><span class="feat-check">✓</span> Seguimiento activo 1 mes</div>
+          <div class="feat"><span class="feat-check">✓</span> Reporte de resultados</div>
+          <div class="feat"><span class="feat-check">✓</span> Garantía 30 días</div>
+        </div>
+        <div class="plan-pauta">+ Pauta mínima $5 USD/día a Meta</div>
+        <div class="plan-btn">Agendar →</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="garantia-section">
+  <div class="garantia-inner">
+    <div class="garantia-icon">🛡️</div>
+    <div class="garantia-text">
+      <p><strong>Garantía de 30 días</strong> — solo en Plan Campaña y Plan Pro. Si tu negocio no recibe tráfico e interacciones reales desde Meta Ads, te devuelvo el dinero. No aplica a la Consulta Estratégica.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"><span>¿Aún no estás listo para invertir en anuncios?</span></div>
+
+<section class="consulta-section" id="consulta">
+  <div class="consulta-card" id="plan-consulta" onclick="selectPlan('consulta')">
+    <div class="consulta-badge">Punto de partida</div>
+    <div>
+      <div class="consulta-name">Consulta Estratégica</div>
+      <div class="consulta-title">45 minutos para saber exactamente qué le falta a tu presencia online</div>
+      <div class="consulta-desc">Reviso tu presencia en redes, tu web y tus anuncios si ya los tienes. Sales con un plan de acción por escrito — con o sin Media Buying después.</div>
+      <div class="consulta-features">
+        <div class="consulta-feat">✓ Diagnóstico de tu presencia en redes y web</div>
+        <div class="consulta-feat">✓ Revisión de anuncios si ya los tienes</div>
+        <div class="consulta-feat">✓ Plan de acción por escrito</div>
+      </div>
+    </div>
+    <div class="consulta-price-block">
+      <div class="consulta-price"><sup>$</sup>49</div>
+      <span class="consulta-usd">USD</span>
+      <div class="consulta-btn">Agendar Consulta →</div>
+    </div>
+  </div>
+</section>
+
+<section class="booking-section" id="booking">
+  <div class="booking-inner">
+    <div class="booking-top">
+      <div class="section-label">Agendar sesión</div>
+      <h2>Elige tu horario</h2>
+      <p>Selecciona una opción arriba para ver el calendario disponible.</p>
+    </div>
+    <div class="selected-plan-tag" id="planTag"></div>
+    <div class="prompt-select" id="promptSelect">
+      <p>👆 Selecciona una opción para continuar</p>
+      <span class="prompt-arrow">↑</span>
+    </div>
+    <div class="calendly-box" id="calendlyBox">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/fcrespo-101solutions/nueva-reunion" style="min-width:320px;height:700px;"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Felipe Crespo</div>
+  <p>© 2026 · Método 101 · Media Buying</p>
+</footer>
+
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopup()">✕</button>
+    <div id="popupForm">
+      <div class="popup-gift">🔍</div>
+      <div style="text-align:center;margin-bottom:1rem;"><span class="popup-badge">✦ Análisis gratuito</span></div>
+      <h3>¿Tus competidores <em>aparecen más</em> que tú?</h3>
+      <p class="popup-desc">Te enviamos un análisis gratuito de tu presencia en Facebook e Instagram y te mostramos qué podrías mejorar para conseguir más clientes.</p>
+      <div class="popup-form">
+        <input type="text" id="popupName" placeholder="Tu nombre" />
+        <input type="email" id="popupEmail" placeholder="Tu correo electrónico" required />
+        <button class="popup-submit" id="popupSubmitBtn" onclick="submitPopup()">Quiero mi análisis gratis →</button>
+      </div>
+      <div class="popup-skip"><button onclick="closePopup()">No gracias, seguir sin el análisis</button></div>
+    </div>
+    <div class="popup-success" id="popupSuccess">
+      <div class="popup-success-icon">✦</div>
+      <h4>¡Listo! Pronto recibirás tu análisis</h4>
+      <p>Revisaremos tu presencia en Facebook e Instagram y te enviaremos el análisis a la brevedad.</p>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+const WORKER_URL = 'https://mailerlite-worker.fcrespo.workers.dev';
+const planMeta = {
+  consulta: { label: '✦ Consulta Estratégica — $49 USD',   cls: 'consulta' },
+  basic:    { label: '✦ Plan Campaña — $300 USD',          cls: 'basic' },
+  pro:      { label: '✦ Plan Pro 3 meses — $1.000 USD',    cls: 'premium' }
+};
+let currentPlan = null;
+let popupShown = false;
+let scrolledToBooking = false;
+let timeOnPage = 0;
+let popupTimer = null;
+
+const pageTimer = setInterval(() => { timeOnPage++; checkPopupConditions(); }, 1000);
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) { scrolledToBooking = true; checkPopupConditions(); } });
+}, { threshold: 0.3 });
+observer.observe(document.getElementById('booking'));
+
+function checkPopupConditions() {
+  if (!popupShown && scrolledToBooking && timeOnPage >= 10 && !popupTimer) {
+    popupTimer = setTimeout(openPopup, 0);
+  }
+}
+
+function openPopup() {
+  if (popupShown) return;
+  popupShown = true;
+  document.getElementById('popupOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  clearInterval(pageTimer);
+}
+
+function closePopup() {
+  document.getElementById('popupOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+async function submitPopup() {
+  const name = document.getElementById('popupName').value.trim();
+  const email = document.getElementById('popupEmail').value.trim();
+  if (!email) { alert('Por favor ingresa tu correo.'); return; }
+  const btn = document.getElementById('popupSubmitBtn');
+  btn.disabled = true; btn.textContent = 'Enviando...';
+  try {
+    const res = await fetch(WORKER_URL, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, name })
+    });
+    if (res.ok) {
+      document.getElementById('popupForm').style.display = 'none';
+      document.getElementById('popupSuccess').classList.add('show');
+      setTimeout(closePopup, 3000);
+    } else {
+      btn.disabled = false; btn.textContent = 'Quiero el PDF gratis →';
+      alert('Hubo un error. Por favor intenta de nuevo.');
+    }
+  } catch(e) {
+    btn.disabled = false; btn.textContent = 'Quiero el PDF gratis →';
+    alert('Error de conexión. Por favor intenta de nuevo.');
+  }
+}
+
+function selectPlan(plan) {
+  currentPlan = plan;
+  ['consulta','basic','pro'].forEach(p => document.getElementById('plan-'+p).classList.remove('active-plan'));
+  document.getElementById('plan-'+plan).classList.add('active-plan');
+  const tag = document.getElementById('planTag');
+  tag.textContent = planMeta[plan].label;
+  tag.className = 'selected-plan-tag show ' + planMeta[plan].cls;
+  document.getElementById('promptSelect').style.display = 'none';
+  document.getElementById('calendlyBox').classList.add('show');
+  document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>
