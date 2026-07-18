@@ -1,1 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gracias por tu compra — Método 101</title>
+  <style>
+    body {
+      font-family: 'Archivo Black', sans-serif;
+      background: #0D0D0D;
+      color: #F3EEE4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 24px;
+      text-align: center;
+    }
+    #contenido {
+      max-width: 480px;
+    }
+    p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    a.acceso {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 12px 20px;
+      background: #E6332B;
+      color: #F3EEE4;
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div id="contenido">
+    <p>Verificando tu pago...</p>
+  </div>
 
+  <script>
+    const WORKER_URL = 'https://anthropic-proxy.fcrespo.workers.dev';
+
+    const params = new URLSearchParams(window.location.search);
+    const paymentId = params.get('payment_id') || params.get('collection_id');
+
+    async function verificar() {
+      const contenido = document.getElementById('contenido');
+
+      if (!paymentId) {
+        contenido.innerHTML = '<p>No encontramos tu pago. Si ya pagaste, escríbenos por WhatsApp y te ayudamos al tiro.</p>';
+        return;
+      }
+
+      try {
+        const res = await fetch(WORKER_URL + '/verificar-pago?payment_id=' + encodeURIComponent(paymentId));
+        const data = await res.json();
+
+        if (data.token) {
+          const accesoUrl = 'https://felipecrespo.cl/generador?token=' + data.token;
+          contenido.innerHTML =
+            '<p>Pago confirmado. Este es tu acceso al generador:</p>' +
+            '<a class="acceso" href="' + accesoUrl + '">Entrar al generador</a>' +
+            '<p style="margin-top:16px; font-size:12px; opacity:0.7;">Guarda este link, lo vas a necesitar cada vez que vuelvas.</p>';
+        } else {
+          contenido.innerHTML = '<p>Tu pago está pendiente o no se pudo confirmar todavía. Si ya pagaste, escríbenos por WhatsApp.</p>';
+        }
+      } catch (e) {
+        document.getElementById('contenido').innerHTML =
+          '<p>Hubo un problema verificando tu pago. Escríbenos por WhatsApp y lo resolvemos.</p>';
+      }
+    }
+
+    verificar();
+  </script>
+</body>
+</html>
