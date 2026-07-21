@@ -3,8 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Método 101 — La base de tu campaña, en segundos | Felipe Crespo</title>
-<meta name="description" content="Escribe tu rubro y tu oferta. Recibe 3 ángulos con títulos, textos y el prompt de imagen para tu gráfica, con el mismo método que uso en mis propias campañas." />
+<title>Generador — Método 101</title>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -23,7 +22,8 @@
   }
   header a { color: #F3EEE4; text-decoration: none; font-size: 13px; opacity: 0.8; }
   .marca { font-family: 'Archivo Black', sans-serif; font-size: 14px; }
-  main { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+  main { max-width: 640px; margin: 0 auto; padding: 40px 24px 80px; }
+
   .eyebrow {
     font-size: 12px;
     letter-spacing: 0.04em;
@@ -33,126 +33,134 @@
   }
   h1 {
     font-family: 'Archivo Black', sans-serif;
-    font-size: 30px;
+    font-size: 26px;
     line-height: 1.25;
-    margin: 0 0 16px;
+    margin: 0 0 8px;
   }
-  .sub { font-size: 15px; opacity: 0.85; margin: 0 0 20px; max-width: 560px; }
-  .metodo-pizza-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-family: 'JetBrains Mono', monospace; color: #E6332B; background: rgba(230,51,43,0.12); padding: 8px 16px; border-radius: 100px; margin-bottom: 36px; }
-  section { margin-top: 64px; }
-  h2 {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 20px;
-    margin: 0 0 6px;
+  .estado-acceso {
+    font-size: 12px;
+    opacity: 0.6;
+    margin-bottom: 32px;
   }
-  .h2-sub { font-size: 13px; opacity: 0.6; margin: 0 0 20px; }
 
-  .planes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .plan-card {
+  label { font-size: 12px; opacity: 0.75; display: block; margin-bottom: 4px; }
+  input[type="text"] {
+    width: 100%;
     background: #171717;
     border: 1px solid #2A2A2A;
-    border-radius: 12px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
+    color: #F3EEE4;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    padding: 12px;
+    border-radius: 6px;
   }
-  .plan-card.destacado { border-color: #E6332B; }
-  .plan-badge {
-    font-size: 11px;
-    color: #E6332B;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    margin-bottom: 10px;
-  }
-  .plan-nombre { font-family: 'Archivo Black', sans-serif; font-size: 17px; margin-bottom: 4px; }
-  .plan-precio { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
-  .plan-precio span { font-size: 12px; opacity: 0.6; font-weight: 400; }
-  .plan-detalle { font-size: 13px; opacity: 0.75; margin-bottom: 20px; flex-grow: 1; }
-  .plan-cta {
+  .campo { margin-bottom: 16px; }
+  .hint { font-size: 12px; opacity: 0.55; margin: 0 0 20px; }
+
+  .btn {
     background: #E6332B;
     color: #F3EEE4;
     border: none;
     border-radius: 6px;
-    padding: 12px 16px;
+    padding: 13px 20px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     cursor: pointer;
+    width: 100%;
   }
-  .plan-card:not(.destacado) .plan-cta {
+  .btn:disabled { opacity: 0.6; cursor: default; }
+  .btn-secundario {
     background: transparent;
     border: 1px solid #3A3A3A;
+    color: #F3EEE4;
   }
-  .plan-cta:disabled { opacity: 0.6; cursor: default; }
 
-  .ejemplo-meta {
+  .mensaje {
+    background: #171717;
+    border: 1px solid #2A2A2A;
+    border-left: 3px solid #E6332B;
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  .mensaje a { color: #E6332B; }
+
+  #resultado { margin-top: 40px; display: none; }
+  .resultado-meta {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     font-size: 13px;
   }
-  .ejemplo-meta span { display: block; opacity: 0.6; font-size: 11px; margin-bottom: 2px; }
-  .angulos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .resultado-meta span { display: block; opacity: 0.6; font-size: 11px; margin-bottom: 2px; }
+
   .angulo-card {
     background: #171717;
     border: 1px solid #2A2A2A;
     border-radius: 10px;
-    padding: 16px;
+    padding: 18px;
+    margin-bottom: 14px;
     font-size: 13px;
   }
-  .angulo-card span { display: block; opacity: 0.5; font-size: 11px; margin-bottom: 6px; }
-  .angulo-card .titulo-angulo { color: #E6332B; font-weight: 700; margin-top: 12px; margin-bottom: 12px; }
-  .angulo-card .prompt-imagen {
-    border-top: 1px solid #2A2A2A;
-    padding-top: 10px;
-    font-size: 12px;
-    opacity: 0.75;
-    font-style: italic;
+  .motivador-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: #E6332B;
+    border: 1px solid #E6332B;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-bottom: 10px;
   }
-
-  .pasos { display: flex; flex-direction: column; gap: 16px; }
-  .paso { display: flex; gap: 14px; align-items: flex-start; font-size: 14px; }
-  .paso-num {
+  .dolor-text { opacity: 0.9; margin-bottom: 4px; }
+  .titulo-angulo {
     font-family: 'Archivo Black', sans-serif;
     color: #E6332B;
-    font-size: 18px;
-    min-width: 28px;
+    font-size: 15px;
+    margin: 10px 0 14px;
   }
-  .nota-alcance {
+  .copy-block { margin-bottom: 14px; }
+  .copy-block span { display: block; font-size: 11px; opacity: 0.5; margin-bottom: 6px; }
+  .copy-block ul { margin: 0; padding-left: 18px; }
+  .copy-block li { margin-bottom: 4px; }
+  .prompt-imagen-box {
+    border-top: 1px solid #2A2A2A;
+    padding-top: 12px;
     font-size: 12px;
-    opacity: 0.6;
-    margin-top: 20px;
-    border-left: 2px solid #E6332B;
-    padding-left: 12px;
+    opacity: 0.8;
+    font-style: italic;
   }
-  .cruce {
-    background: #171717;
-    border: 1px solid #2A2A2A;
-    border-radius: 12px;
-    padding: 24px;
+  .card-footer {
+    margin-top: 14px;
+    text-align: right;
   }
-  .cruce p { font-size: 14px; opacity: 0.85; margin: 0 0 16px; }
-  .cruce a {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: #F3EEE4;
-    text-decoration: none;
+  .copiar-btn {
+    background: transparent;
     border: 1px solid #3A3A3A;
+    color: #F3EEE4;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    padding: 6px 12px;
     border-radius: 6px;
-    padding: 10px 16px;
-    font-size: 13px;
+    cursor: pointer;
   }
+  .copiar-btn.copiado { border-color: #E6332B; color: #E6332B; }
+
+  .uso-footer {
+    font-size: 12px;
+    opacity: 0.65;
+    margin: 24px 0;
+    text-align: center;
+  }
+
   footer {
     text-align: center;
     font-size: 12px;
     opacity: 0.5;
     padding: 40px 24px;
-  }
-  @media (max-width: 560px) {
-    .angulos, .ejemplo-meta, .planes { grid-template-columns: 1fr; }
-    h1 { font-size: 25px; }
   }
 </style>
 </head>
@@ -164,75 +172,45 @@
 </header>
 
 <main>
-  <div class="eyebrow">Método 101</div>
-  <h1>La base creativa de tu campaña, en segundos.</h1>
-  <p class="sub">Escribe tu rubro y tu oferta. Recibe 3 ángulos con títulos, textos, y el prompt de imagen para generar tu gráfica en Gemini o ChatGPT — con el mismo método que uso en mis propias campañas. Es la base para armar tu anuncio, no una campaña gestionada de principio a fin.</p>
-  <div class="metodo-pizza-badge">🍕 $14.990 CLP — el precio de una pizza</div>
-
-  <div class="planes">
-    <div class="plan-card">
-      <div class="plan-nombre">3 estrategias</div>
-      <div class="plan-precio">$14.990 <span>CLP</span></div>
-      <div class="plan-detalle">3 estrategias de campaña completas — cada una con 3 ángulos, copy y prompt de imagen. Sin vencimiento, las usas cuando quieras.</div>
-      <button class="plan-cta" data-plan="paquete">Comprar</button>
-    </div>
-    <div class="plan-card destacado">
-      <div class="plan-badge">RECOMENDADO</div>
-      <div class="plan-nombre">Acceso completo — 1 año</div>
-      <div class="plan-precio">$79.990 <span>CLP</span></div>
-      <div class="plan-detalle">Estrategias ilimitadas durante 12 meses. Ideal si lanzas ofertas seguido — te sale a menos de $7.000 el mes.</div>
-      <button class="plan-cta" data-plan="anual">Comprar</button>
+  <div id="vista-sin-token" style="display:none;">
+    <div class="eyebrow">Método 101</div>
+    <h1>Este link no es válido</h1>
+    <div class="mensaje">
+      No encontramos un acceso en este link. Si ya compraste, revisa el correo o la página de gracias para el link correcto. Si no has comprado, puedes hacerlo <a href="https://felipecrespo.cl/metodo101">acá</a>.
     </div>
   </div>
 
-  <section>
-    <h2>Así funciona, con un caso real</h2>
-    <p class="h2-sub">101homies — lo que más vende no es la hamburguesa, es no quedarse fuera</p>
-    <div class="ejemplo-meta">
-      <div><span>RUBRO</span>Comida rápida — smash burgers</div>
-      <div><span>OFERTA</span>Smash Truffle — edición limitada del mes</div>
-    </div>
-    <div class="angulos">
-      <div class="angulo-card">
-        <span>DOLOR</span>
-        No se siente parte de los que ya están hablando del sabor del mes
-        <div class="titulo-angulo">Deseo</div>
-        <div class="prompt-imagen">Prompt: grupo de amigos compartiendo la Smash Truffle en una mesa, luz cálida nocturna, ambiente urbano, gesto de disfrute compartido</div>
-      </div>
-      <div class="angulo-card">
-        <span>DOLOR</span>
-        Teme quedarse sin probar la edición limitada antes de que se acabe
-        <div class="titulo-angulo">Urgencia</div>
-        <div class="prompt-imagen">Prompt: Smash Truffle con overlay de texto "queda poco tiempo", fondo con reloj sugerido, tono urgente pero limpio</div>
-      </div>
-      <div class="angulo-card">
-        <span>DOLOR</span>
-        No sabe si de verdad tiene algo distinto — trufa real, smash a la vista — que justifique salir de la rutina
-        <div class="titulo-angulo">Revelar</div>
-        <div class="prompt-imagen">Prompt: primer plano del smash recién aplastado en la plancha, vapor visible, trufa rallada cayendo, estilo POV cocina</div>
-      </div>
-    </div>
-  </section>
+  <div id="vista-generador" style="display:none;">
+    <div class="eyebrow">Método 101</div>
+    <h1>Genera tu estrategia</h1>
+    <div class="estado-acceso" id="estado-acceso"></div>
 
-  <section>
-    <h2>Tres pasos</h2>
-    <div class="pasos">
-      <div class="paso"><div class="paso-num">01</div><div>Escribe tu rubro y la oferta puntual que quieres promocionar — no toda tu carta, un producto ganador.</div></div>
-      <div class="paso"><div class="paso-num">02</div><div>El método identifica 3 dolores reales de tu cliente — uno de dinero, uno de bienestar, uno social — y los convierte en 3 ángulos.</div></div>
-      <div class="paso"><div class="paso-num">03</div><div>Recibes títulos, textos y el prompt de imagen para cada ángulo. Los usas, testeas, y te quedas con los ganadores.</div></div>
-    </div>
-    <p class="nota-alcance">Esto te da la base creativa lista para armar el anuncio — no incluye manejo de cuenta, presupuesto ni optimización de campaña.</p>
-  </section>
+    <div id="mensaje-error" class="mensaje" style="display:none;"></div>
 
-  <section>
-    <h2>¿Prefieres que yo me encargue de todo?</h2>
-    <div class="cruce">
-      <p>Método 101 es para armar tú mismo tus piezas. Si prefieres que yo revise tu presencia completa o maneje tus anuncios directamente, hablemos por WhatsApp.</p>
-      <a href="#" id="link-whatsapp">
-        Escríbeme por WhatsApp →
-      </a>
+    <form id="form-generador">
+      <div class="campo">
+        <label for="rubro-input">Rubro</label>
+        <input type="text" id="rubro-input" placeholder="clínica dental, tienda de ropa, veterinaria..." />
+      </div>
+      <div class="campo">
+        <label for="oferta-input">Oferta específica</label>
+        <input type="text" id="oferta-input" placeholder="plan de vacunas mensual, no 'servicios veterinarios'" />
+      </div>
+      <p class="hint">Elige un producto puntual con demanda real y buen margen — no toda tu carta.</p>
+      <button type="submit" class="btn" id="btn-generar">Generar estrategia</button>
+    </form>
+
+    <div id="resultado">
+      <h2 style="font-family:'Archivo Black',sans-serif; font-size:18px; margin:0 0 4px;">Tu estrategia</h2>
+      <div class="resultado-meta">
+        <div><span>RUBRO</span><span id="resultado-rubro"></span></div>
+        <div><span>OFERTA</span><span id="resultado-oferta"></span></div>
+      </div>
+      <div id="angulos-container"></div>
+      <div class="uso-footer" id="uso-footer"></div>
+      <button class="btn btn-secundario" id="btn-otra">Generar otra estrategia</button>
     </div>
-  </section>
+  </div>
 </main>
 
 <footer>
@@ -241,39 +219,157 @@
 
 <script>
   const WORKER_URL = 'https://anthropic-proxy.fcrespo.workers.dev';
-  const WHATSAPP_NUMERO = '56900000000'; // reemplazar por el número real
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get('token');
 
-  document.querySelectorAll('.plan-cta').forEach((boton) => {
-    boton.addEventListener('click', async () => {
-      const plan = boton.dataset.plan;
-      const textoOriginal = boton.textContent;
-      boton.disabled = true;
-      boton.textContent = 'Redirigiendo...';
+  const vistaSinToken = document.getElementById('vista-sin-token');
+  const vistaGenerador = document.getElementById('vista-generador');
+  const form = document.getElementById('form-generador');
+  const btnGenerar = document.getElementById('btn-generar');
+  const btnOtra = document.getElementById('btn-otra');
+  const mensajeError = document.getElementById('mensaje-error');
+  const resultado = document.getElementById('resultado');
+  const estadoAcceso = document.getElementById('estado-acceso');
 
-      try {
-        const res = await fetch(WORKER_URL + '/crear-pago', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ plan }),
-        });
-        const data = await res.json();
-        if (data.init_point) {
-          window.location.href = data.init_point;
-        } else {
-          boton.disabled = false;
-          boton.textContent = textoOriginal;
-          alert('No pudimos iniciar el pago, intenta de nuevo.');
+  if (!token) {
+    vistaSinToken.style.display = 'block';
+  } else {
+    vistaGenerador.style.display = 'block';
+  }
+
+  const MENSAJES_ERROR = {
+    token_invalido: 'Este link no es válido. Revisa el correo o la página de gracias para el link correcto.',
+    token_faltante: 'Falta el link de acceso. Revisa que copiaste la URL completa.',
+    sin_usos_restantes: 'Ya usaste tus 3 estrategias de este paquete. Si quieres seguir generando, revisa el acceso anual.',
+    acceso_expirado: 'Tu acceso anual venció. Renueva para seguir generando estrategias.',
+    rubro_invalido: 'Escribe un rubro real para tu negocio.',
+    oferta_invalida: 'La oferta no puede ser igual al rubro — sé más específico con el producto puntual.',
+  };
+
+  function mostrarError(codigo) {
+    const texto = MENSAJES_ERROR[codigo] || 'Hubo un problema generando tu estrategia. Intenta de nuevo en un momento.';
+    let extra = '';
+    if (codigo === 'sin_usos_restantes' || codigo === 'acceso_expirado') {
+      extra = ' <a href="https://felipecrespo.cl/metodo101">Ver planes →</a>';
+    }
+    mensajeError.innerHTML = texto + extra;
+    mensajeError.style.display = 'block';
+  }
+
+  function ocultarError() {
+    mensajeError.style.display = 'none';
+  }
+
+  function formatearAngulo(item) {
+    return item.motivador.toUpperCase() + ' · ' + item.angulo.toUpperCase() + '\n' +
+      'Dolor: ' + item.dolor + '\n\n' +
+      'Títulos:\n- ' + item.titulos.join('\n- ') + '\n\n' +
+      'Textos:\n- ' + item.textos.join('\n- ') + '\n\n' +
+      'Prompt de imagen:\n' + item.prompt_imagen;
+  }
+
+  function renderAngulos(angulos) {
+    const contenedor = document.getElementById('angulos-container');
+    contenedor.innerHTML = angulos.map((item, i) => `
+      <div class="angulo-card">
+        <span class="motivador-tag">${item.motivador}</span>
+        <div class="dolor-text">${item.dolor}</div>
+        <div class="titulo-angulo">${item.angulo}</div>
+        <div class="copy-block">
+          <span>TÍTULOS</span>
+          <ul>${item.titulos.map(t => `<li>${t}</li>`).join('')}</ul>
+        </div>
+        <div class="copy-block">
+          <span>TEXTOS</span>
+          <ul>${item.textos.map(t => `<li>${t}</li>`).join('')}</ul>
+        </div>
+        <div class="prompt-imagen-box">${item.prompt_imagen}</div>
+        <div class="card-footer">
+          <button class="copiar-btn" data-index="${i}">Copiar todo</button>
+        </div>
+      </div>
+    `).join('');
+
+    contenedor.querySelectorAll('.copiar-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const item = angulos[parseInt(btn.dataset.index, 10)];
+        try {
+          await navigator.clipboard.writeText(formatearAngulo(item));
+          btn.textContent = 'Copiado ✓';
+          btn.classList.add('copiado');
+          setTimeout(() => { btn.textContent = 'Copiar todo'; btn.classList.remove('copiado'); }, 1800);
+        } catch (e) {
+          alert('No pudimos copiar automáticamente. Selecciona el texto manualmente.');
         }
-      } catch (e) {
-        boton.disabled = false;
-        boton.textContent = textoOriginal;
-        alert('No pudimos iniciar el pago, intenta de nuevo.');
-      }
+      });
     });
+  }
+
+  function actualizarEstadoAcceso(data) {
+    if (data.acceso_completo) {
+      const fecha = new Date(data.expira);
+      estadoAcceso.textContent = 'Acceso completo · vigente hasta ' + fecha.toLocaleDateString('es-CL');
+    } else if (typeof data.usos_restantes === 'number') {
+      estadoAcceso.textContent = 'Te quedan ' + data.usos_restantes + ' estrategia' + (data.usos_restantes === 1 ? '' : 's');
+    }
+  }
+
+  async function generar(rubro, oferta) {
+    ocultarError();
+    btnGenerar.disabled = true;
+    btnGenerar.textContent = 'Generando...';
+
+    try {
+      const res = await fetch(WORKER_URL + '/generador', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, rubro, oferta }),
+      });
+      const data = await res.json();
+
+      if (data.error) {
+        mostrarError(data.error);
+        btnGenerar.disabled = false;
+        btnGenerar.textContent = 'Generar estrategia';
+        return;
+      }
+
+      document.getElementById('resultado-rubro').textContent = data.rubro;
+      document.getElementById('resultado-oferta').textContent = data.oferta;
+      renderAngulos(data.angulos);
+      actualizarEstadoAcceso(data);
+
+      form.style.display = 'none';
+      resultado.style.display = 'block';
+
+      const sinMasUsos = !data.acceso_completo && data.usos_restantes <= 0;
+      btnOtra.style.display = sinMasUsos ? 'none' : 'block';
+
+      resultado.scrollIntoView({ behavior: 'smooth' });
+    } catch (e) {
+      mostrarError('error_generacion');
+      btnGenerar.disabled = false;
+      btnGenerar.textContent = 'Generar estrategia';
+    }
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const rubro = document.getElementById('rubro-input').value.trim();
+    const oferta = document.getElementById('oferta-input').value.trim();
+    if (!rubro || !oferta) return;
+    generar(rubro, oferta);
   });
 
-  const mensaje = encodeURIComponent('Hola, vi la página de Método 101 y quiero saber más sobre la Consulta Estratégica y Media Buying.');
-  document.getElementById('link-whatsapp').href = 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + mensaje;
+  btnOtra.addEventListener('click', () => {
+    resultado.style.display = 'none';
+    form.style.display = 'block';
+    btnGenerar.disabled = false;
+    btnGenerar.textContent = 'Generar estrategia';
+    document.getElementById('rubro-input').value = '';
+    document.getElementById('oferta-input').value = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 </script>
 
 </body>
