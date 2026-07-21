@@ -3,15 +3,19 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Método 101 — La base de tu campaña, en segundos | Felipe Crespo</title>
-<meta name="description" content="Escribe tu rubro y tu oferta. Recibe 3 ángulos con títulos, textos y el prompt de imagen para tu gráfica, con el mismo método que uso en mis propias campañas." />
+<title>Método 101 — La base de tu próximo anuncio, listo en segundos | Felipe Crespo</title>
+<meta name="description" content="Para locales de comida en Chile. Escribe tu rubro y tu oferta. Recibe 3 versiones del anuncio con copy, prompt de imagen, prompt de lettering y adaptaciones. Desde $29.990 CLP." />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'JetBrains Mono', monospace;
     background: #0D0D0D;
     color: #F3EEE4;
-    margin: 0;
     line-height: 1.6;
   }
   header {
@@ -23,135 +27,68 @@
   }
   header a { color: #F3EEE4; text-decoration: none; font-size: 13px; opacity: 0.8; }
   .marca { font-family: 'Archivo Black', sans-serif; font-size: 14px; }
-  main { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
-  .eyebrow {
-    font-size: 12px;
-    letter-spacing: 0.04em;
-    color: #E6332B;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  h1 {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 30px;
-    line-height: 1.25;
-    margin: 0 0 16px;
-  }
-  .sub { font-size: 15px; opacity: 0.85; margin: 0 0 36px; max-width: 560px; }
+  main { max-width: 720px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  .eyebrow { font-size: 12px; letter-spacing: 0.04em; color: #E6332B; font-weight: 700; margin-bottom: 8px; }
+  h1 { font-family: 'Archivo Black', sans-serif; font-size: 32px; line-height: 1.2; margin: 0 0 16px; }
+  .sub { font-size: 15px; opacity: 0.85; margin: 0 0 20px; max-width: 580px; }
+  .badge-precio { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #E6332B; background: rgba(230,51,43,0.12); padding: 8px 16px; border-radius: 100px; margin-bottom: 36px; }
   section { margin-top: 64px; }
-  h2 {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 20px;
-    margin: 0 0 6px;
-  }
+  h2 { font-family: 'Archivo Black', sans-serif; font-size: 21px; margin: 0 0 6px; }
   .h2-sub { font-size: 13px; opacity: 0.6; margin: 0 0 20px; }
 
   .planes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .plan-card {
-    background: #171717;
-    border: 1px solid #2A2A2A;
-    border-radius: 12px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-  }
-  .plan-card.destacado { border-color: #E6332B; }
-  .plan-badge {
-    font-size: 11px;
-    color: #E6332B;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    margin-bottom: 10px;
-  }
+  .plan-card { background: #171717; border: 1px solid #2A2A2A; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; }
+  .plan-card.destacado { border-color: #E6332B; position: relative; }
+  .plan-badge { position: absolute; top: -12px; left: 20px; font-size: 10px; color: #F3EEE4; font-weight: 700; letter-spacing: 0.05em; background: #E6332B; padding: 4px 10px; border-radius: 100px; }
   .plan-nombre { font-family: 'Archivo Black', sans-serif; font-size: 17px; margin-bottom: 4px; }
-  .plan-precio { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .plan-precio { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
   .plan-precio span { font-size: 12px; opacity: 0.6; font-weight: 400; }
+  .plan-precio-referencia { font-size: 11px; opacity: 0.55; margin-bottom: 12px; }
   .plan-detalle { font-size: 13px; opacity: 0.75; margin-bottom: 20px; flex-grow: 1; }
-  .plan-cta {
-    background: #E6332B;
-    color: #F3EEE4;
-    border: none;
-    border-radius: 6px;
-    padding: 12px 16px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  .plan-card:not(.destacado) .plan-cta {
-    background: transparent;
-    border: 1px solid #3A3A3A;
-  }
+  .plan-cta { background: #E6332B; color: #F3EEE4; border: none; border-radius: 6px; padding: 12px 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; cursor: pointer; }
+  .plan-card:not(.destacado) .plan-cta { background: transparent; border: 1px solid #3A3A3A; }
   .plan-cta:disabled { opacity: 0.6; cursor: default; }
 
-  .ejemplo-meta {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
-    font-size: 13px;
-  }
-  .ejemplo-meta span { display: block; opacity: 0.6; font-size: 11px; margin-bottom: 2px; }
-  .angulos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .angulo-card {
-    background: #171717;
-    border: 1px solid #2A2A2A;
-    border-radius: 10px;
-    padding: 16px;
-    font-size: 13px;
-  }
-  .angulo-card span { display: block; opacity: 0.5; font-size: 11px; margin-bottom: 6px; }
-  .angulo-card .titulo-angulo { color: #E6332B; font-weight: 700; margin-top: 12px; margin-bottom: 12px; }
-  .angulo-card .prompt-imagen {
-    border-top: 1px solid #2A2A2A;
-    padding-top: 10px;
-    font-size: 12px;
-    opacity: 0.75;
-    font-style: italic;
-  }
+  .ejemplo-caja { background: #171717; border: 1px solid #2A2A2A; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+  .ejemplo-meta-row { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 4px; }
+  .ejemplo-meta-item { display: flex; flex-direction: column; }
+  .ejemplo-meta-item span { display: block; opacity: 0.5; font-size: 10px; margin-bottom: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .ejemplo-meta-item strong { font-size: 14px; font-weight: 500; color: #F3EEE4; }
+
+  .angulos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; }
+  .angulo-card { background: #171717; border: 1px solid #2A2A2A; border-left: 3px solid #E6332B; border-radius: 10px; padding: 14px; font-size: 12px; }
+  .angulo-card .angulo-tag { display: block; opacity: 0.5; font-size: 10px; margin-bottom: 6px; letter-spacing: 0.05em; text-transform: uppercase; }
+  .angulo-card .angulo-titulo { font-family: 'Archivo Black', sans-serif; color: #F3EEE4; font-size: 13px; line-height: 1.35; margin-bottom: 10px; }
+
+  .entregable-lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .entregable-lista li { padding: 12px 14px; background: #171717; border: 1px solid #2A2A2A; border-radius: 8px; display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.5; }
+  .entregable-lista li::before { content: "✓"; color: #E6332B; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .entregable-lista li strong { color: #F3EEE4; font-weight: 600; }
+  .entregable-lista li span { display: block; opacity: 0.65; font-size: 12px; margin-top: 2px; }
+
+  .metricas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
+  .metrica-card { background: #171717; border: 1px solid #2A2A2A; border-radius: 10px; padding: 16px; }
+  .metrica-num { font-family: 'Archivo Black', sans-serif; font-size: 24px; color: #E6332B; margin-bottom: 4px; line-height: 1; }
+  .metrica-label { font-size: 12px; opacity: 0.75; line-height: 1.4; }
+  .metricas-footnote { font-size: 11px; opacity: 0.5; margin-top: 12px; font-style: italic; text-align: center; }
 
   .pasos { display: flex; flex-direction: column; gap: 16px; }
   .paso { display: flex; gap: 14px; align-items: flex-start; font-size: 14px; }
-  .paso-num {
-    font-family: 'Archivo Black', sans-serif;
-    color: #E6332B;
-    font-size: 18px;
-    min-width: 28px;
-  }
-  .nota-alcance {
-    font-size: 12px;
-    opacity: 0.6;
-    margin-top: 20px;
-    border-left: 2px solid #E6332B;
-    padding-left: 12px;
-  }
-  .cruce {
-    background: #171717;
-    border: 1px solid #2A2A2A;
-    border-radius: 12px;
-    padding: 24px;
-  }
+  .paso-num { font-family: 'Archivo Black', sans-serif; color: #E6332B; font-size: 18px; min-width: 28px; }
+  .nota-alcance { font-size: 12px; opacity: 0.6; margin-top: 20px; border-left: 2px solid #E6332B; padding-left: 12px; }
+
+  .cruce { background: #171717; border: 1px solid #2A2A2A; border-radius: 12px; padding: 24px; }
   .cruce p { font-size: 14px; opacity: 0.85; margin: 0 0 16px; }
-  .cruce a {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: #F3EEE4;
-    text-decoration: none;
-    border: 1px solid #3A3A3A;
-    border-radius: 6px;
-    padding: 10px 16px;
-    font-size: 13px;
-  }
-  footer {
-    text-align: center;
-    font-size: 12px;
-    opacity: 0.5;
-    padding: 40px 24px;
-  }
+  .cruce a { display: inline-flex; align-items: center; gap: 8px; color: #F3EEE4; text-decoration: none; border: 1px solid #3A3A3A; border-radius: 6px; padding: 10px 16px; font-size: 13px; }
+  .cruce a:hover { border-color: #E6332B; }
+
+  footer { text-align: center; font-size: 12px; opacity: 0.5; padding: 40px 24px; }
+
   @media (max-width: 560px) {
-    .angulos, .ejemplo-meta, .planes { grid-template-columns: 1fr; }
-    h1 { font-size: 25px; }
+    .angulos, .planes { grid-template-columns: 1fr; }
+    .metricas { grid-template-columns: 1fr 1fr; }
+    h1 { font-size: 26px; }
   }
 </style>
 </head>
@@ -163,72 +100,110 @@
 </header>
 
 <main>
-  <div class="eyebrow">Método 101</div>
-  <h1>La base creativa de tu campaña, en segundos.</h1>
-  <p class="sub">Escribe tu rubro y tu oferta. Recibe 3 ángulos con títulos, textos, y el prompt de imagen para generar tu gráfica en Gemini o ChatGPT — con el mismo método que uso en mis propias campañas. Es la base para armar tu anuncio, no una campaña gestionada de principio a fin.</p>
+  <div class="eyebrow">Solo para locales de comida en Chile</div>
+  <h1>La base creativa de tu próximo anuncio, en segundos.</h1>
+  <p class="sub">Escribes tu rubro y qué oferta quieres promocionar. Recibes <strong>3 versiones del anuncio</strong> — con copy, prompt de imagen, prompt de lettering, adaptaciones para feed y story, y el gancho para el reel. Con el estilo de tu marca aplicado. El mismo método que uso en 101homies.</p>
+  <div class="badge-precio">🍽 $29.990 CLP — menos que una salida a comer para dos</div>
 
   <div class="planes">
     <div class="plan-card">
       <div class="plan-nombre">3 estrategias</div>
-      <div class="plan-precio">$14.990 <span>CLP</span></div>
-      <div class="plan-detalle">3 estrategias de campaña completas — cada una con 3 ángulos, copy y prompt de imagen. Sin vencimiento, las usas cuando quieras.</div>
+      <div class="plan-precio">$29.990 <span>CLP</span></div>
+      <div class="plan-precio-referencia">Sin vencimiento — las usas cuando quieras</div>
+      <div class="plan-detalle">3 estrategias completas. Cada una con 3 versiones del anuncio, prompts de imagen y lettering separados, adaptaciones y gancho de reel.</div>
       <button class="plan-cta" data-plan="paquete">Comprar</button>
     </div>
     <div class="plan-card destacado">
-      <div class="plan-badge">RECOMENDADO</div>
-      <div class="plan-nombre">Acceso completo — 1 año</div>
-      <div class="plan-precio">$79.990 <span>CLP</span></div>
-      <div class="plan-detalle">Estrategias ilimitadas durante 12 meses. Ideal si lanzas ofertas seguido — te sale a menos de $7.000 el mes.</div>
+      <div class="plan-badge">MEJOR VALOR</div>
+      <div class="plan-nombre">Acceso anual</div>
+      <div class="plan-precio">$149.990 <span>CLP</span></div>
+      <div class="plan-precio-referencia">$12.499 al mes efectivo · 12 meses ilimitados</div>
+      <div class="plan-detalle">Estrategias ilimitadas durante 12 meses. Ideal si lanzas ofertas o cambias tu producto seguido — te alcanza para todo el año.</div>
       <button class="plan-cta" data-plan="anual">Comprar</button>
     </div>
   </div>
 
   <section>
-    <h2>Así funciona, con un caso real</h2>
-    <p class="h2-sub">101homies — lo que más vende no es la hamburguesa, es no quedarse fuera</p>
-    <div class="ejemplo-meta">
-      <div><span>RUBRO</span>Comida rápida — smash burgers</div>
-      <div><span>OFERTA</span>Smash Truffle — edición limitada del mes</div>
+    <h2>Un caso real de este mes</h2>
+    <p class="h2-sub">Burger del mes en 101homies — así se usa el método</p>
+
+    <div class="ejemplo-caja">
+      <div class="ejemplo-meta-row">
+        <div class="ejemplo-meta-item">
+          <span>Rubro</span>
+          <strong>Hamburguesería, especialidad smash</strong>
+        </div>
+        <div class="ejemplo-meta-item">
+          <span>Oferta</span>
+          <strong>Burger del mes: doble carne, cheddar americano, cebolla morada en cubos y salsa trufada. Con papas y bebida a $11.900.</strong>
+        </div>
+      </div>
+
+      <div class="angulos">
+        <div class="angulo-card">
+          <span class="angulo-tag">Riqueza · Revelar</span>
+          <div class="angulo-titulo">"La trufa la echamos al momento. Míralo."</div>
+        </div>
+        <div class="angulo-card">
+          <span class="angulo-tag">Placer · Deseo</span>
+          <div class="angulo-titulo">"El cheddar americano se derrite sobre la doble carne."</div>
+        </div>
+        <div class="angulo-card">
+          <span class="angulo-tag">Social · Urgencia</span>
+          <div class="angulo-titulo">"Solo julio. En agosto vuelve el próximo año."</div>
+        </div>
+      </div>
     </div>
-    <div class="angulos">
-      <div class="angulo-card">
-        <span>DOLOR</span>
-        No se siente parte de los que ya están hablando del sabor del mes
-        <div class="titulo-angulo">Deseo</div>
-        <div class="prompt-imagen">Prompt: grupo de amigos compartiendo la Smash Truffle en una mesa, luz cálida nocturna, ambiente urbano, gesto de disfrute compartido</div>
+
+    <div class="metricas">
+      <div class="metrica-card">
+        <div class="metrica-num">22x</div>
+        <div class="metrica-label">ROAS con valor de compra</div>
       </div>
-      <div class="angulo-card">
-        <span>DOLOR</span>
-        Teme quedarse sin probar la edición limitada antes de que se acabe
-        <div class="titulo-angulo">Urgencia</div>
-        <div class="prompt-imagen">Prompt: Smash Truffle con overlay de texto "queda poco tiempo", fondo con reloj sugerido, tono urgente pero limpio</div>
+      <div class="metrica-card">
+        <div class="metrica-num">104</div>
+        <div class="metrica-label">Compras generadas</div>
       </div>
-      <div class="angulo-card">
-        <span>DOLOR</span>
-        No sabe si de verdad tiene algo distinto — trufa real, smash a la vista — que justifique salir de la rutina
-        <div class="titulo-angulo">Revelar</div>
-        <div class="prompt-imagen">Prompt: primer plano del smash recién aplastado en la plancha, vapor visible, trufa rallada cayendo, estilo POV cocina</div>
+      <div class="metrica-card">
+        <div class="metrica-num">&lt; $1.000</div>
+        <div class="metrica-label">Costo por compra</div>
+      </div>
+      <div class="metrica-card">
+        <div class="metrica-num">$114k</div>
+        <div class="metrica-label">CLP de pauta invertida</div>
       </div>
     </div>
+    <p class="metricas-footnote">Campaña real de julio 2026 · 101homies · La Serena</p>
   </section>
 
   <section>
-    <h2>Tres pasos</h2>
+    <h2>Qué recibes por cada estrategia</h2>
+    <p class="h2-sub">Tres versiones del anuncio, cada una con todo lo de abajo</p>
+    <ul class="entregable-lista">
+      <li><div><strong>Copy listo para Meta</strong><span>Dos títulos y dos textos por versión, escritos con el tono de tu marca.</span></div></li>
+      <li><div><strong>Prompt de imagen</strong><span>Instrucciones específicas para generar la fotografía en Gemini o ChatGPT, con la referencia visual de tu marca.</span></div></li>
+      <li><div><strong>Prompt de lettering</strong><span>Descripción del texto sobre la gráfica: qué frase, tipografía, jerarquía y color. Separado del prompt de imagen para que quede parejo entre las 3 versiones.</span></div></li>
+      <li><div><strong>Adaptación para feed y story</strong><span>Cómo cambia la composición al pasar de 4:5 a 9:16 — sin tener que rehacer todo desde cero.</span></div></li>
+      <li><div><strong>Gancho de reel</strong><span>La frase o acción del primer segundo para detener el scroll.</span></div></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Cómo funciona</h2>
     <div class="pasos">
-      <div class="paso"><div class="paso-num">01</div><div>Escribe tu rubro y la oferta puntual que quieres promocionar — no toda tu carta, un producto ganador.</div></div>
-      <div class="paso"><div class="paso-num">02</div><div>El método identifica 3 dolores reales de tu cliente — uno de dinero, uno de bienestar, uno social — y los convierte en 3 ángulos.</div></div>
-      <div class="paso"><div class="paso-num">03</div><div>Recibes títulos, textos y el prompt de imagen para cada ángulo. Los usas, testeas, y te quedas con los ganadores.</div></div>
+      <div class="paso"><div class="paso-num">01</div><div><strong>Compras y accedes.</strong> Apenas se confirma el pago, entras al generador con un link directo. Sin correo intermedio.</div></div>
+      <div class="paso"><div class="paso-num">02</div><div><strong>Configuras tu marca — una sola vez.</strong> Te pedimos 90 segundos: personalidad, paleta, tipografía, estilo visual y tu tono. Se guarda y se aplica a todo lo que generes después.</div></div>
+      <div class="paso"><div class="paso-num">03</div><div><strong>Escribes rubro + oferta puntual.</strong> No toda la carta — un producto ganador. Ejemplo: "burger del mes con doble carne y salsa trufada a $11.900".</div></div>
+      <div class="paso"><div class="paso-num">04</div><div><strong>Recibes tu estrategia.</strong> Tres versiones, con todo lo de arriba. La copias por sección o la copias entera y la mandas a diseño.</div></div>
     </div>
-    <p class="nota-alcance">Esto te da la base creativa lista para armar el anuncio — no incluye manejo de cuenta, presupuesto ni optimización de campaña.</p>
+    <p class="nota-alcance">Método 101 te da la base creativa lista para armar el anuncio — no incluye manejo de la cuenta de Meta, presupuesto ni optimización de campaña.</p>
   </section>
 
   <section>
     <h2>¿Prefieres que yo me encargue de todo?</h2>
     <div class="cruce">
-      <p>Método 101 es para armar tú mismo tus piezas. Si prefieres que yo revise tu presencia completa o maneje tus anuncios directamente, hablemos por WhatsApp.</p>
-      <a href="#" id="link-whatsapp">
-        Escríbeme por WhatsApp →
-      </a>
+      <p>Método 101 es para armar tu propia campaña. Si prefieres que revise tu presencia entera o que yo maneje directamente tus anuncios en Meta — con setup, optimización y reportes — hablemos por WhatsApp y te cuento las opciones.</p>
+      <a href="#" id="link-whatsapp">Escríbeme por WhatsApp →</a>
     </div>
   </section>
 </main>
@@ -270,7 +245,7 @@
     });
   });
 
-  const mensaje = encodeURIComponent('Hola, vi la página de Método 101 y quiero saber más sobre la Consulta Estratégica y Media Buying.');
+  const mensaje = encodeURIComponent('Hola Felipe, vi la página de Método 101 y quiero saber más sobre la Consulta Estratégica o Media Buying.');
   document.getElementById('link-whatsapp').href = 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + mensaje;
 </script>
 
