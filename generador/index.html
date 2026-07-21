@@ -4,13 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Generador — Método 101</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'JetBrains Mono', monospace;
     background: #0D0D0D;
     color: #F3EEE4;
-    margin: 0;
     line-height: 1.6;
   }
   header {
@@ -20,31 +20,18 @@
     padding: 20px 24px;
     border-bottom: 1px solid #2A2A2A;
   }
-  header a { color: #F3EEE4; text-decoration: none; font-size: 13px; opacity: 0.8; }
+  header a { color: #F3EEE4; text-decoration: none; font-size: 13px; opacity: 0.75; }
   .marca { font-family: 'Archivo Black', sans-serif; font-size: 14px; }
-  main { max-width: 640px; margin: 0 auto; padding: 40px 24px 80px; }
+  main { max-width: 720px; margin: 0 auto; padding: 40px 24px 80px; }
 
-  .eyebrow {
-    font-size: 12px;
-    letter-spacing: 0.04em;
-    color: #E6332B;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  h1 {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 26px;
-    line-height: 1.25;
-    margin: 0 0 8px;
-  }
-  .estado-acceso {
-    font-size: 12px;
-    opacity: 0.6;
-    margin-bottom: 32px;
-  }
+  .eyebrow { font-size: 12px; letter-spacing: 0.04em; color: #E6332B; font-weight: 700; margin-bottom: 8px; }
+  h1 { font-family: 'Archivo Black', sans-serif; font-size: 26px; line-height: 1.25; margin: 0 0 8px; }
+  h2 { font-family: 'Archivo Black', sans-serif; font-size: 18px; margin: 0 0 4px; }
+  .subtitulo { font-size: 13px; opacity: 0.65; margin-bottom: 28px; }
+  .estado-acceso { font-size: 12px; opacity: 0.55; margin-bottom: 24px; }
 
-  label { font-size: 12px; opacity: 0.75; display: block; margin-bottom: 4px; }
-  input[type="text"] {
+  label { font-size: 12px; opacity: 0.75; display: block; margin-bottom: 6px; letter-spacing: 0.03em; }
+  input[type="text"], input[type="color"], textarea, select {
     width: 100%;
     background: #171717;
     border: 1px solid #2A2A2A;
@@ -53,9 +40,33 @@
     font-size: 14px;
     padding: 12px;
     border-radius: 6px;
+    outline: none;
   }
-  .campo { margin-bottom: 16px; }
-  .hint { font-size: 12px; opacity: 0.55; margin: 0 0 20px; }
+  input:focus, textarea:focus, select:focus { border-color: #E6332B; }
+  textarea { resize: vertical; min-height: 68px; }
+  .campo { margin-bottom: 18px; }
+  .hint { font-size: 12px; opacity: 0.5; margin: 0 0 20px; }
+
+  .personalidad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .chip-btn {
+    background: #171717;
+    border: 1px solid #2A2A2A;
+    color: #F3EEE4;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    padding: 8px 4px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: capitalize;
+    transition: all 0.15s;
+  }
+  .chip-btn.activo { background: #E6332B; border-color: #E6332B; }
+  .chip-btn:hover:not(.activo) { border-color: #E6332B; }
+
+  .paleta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .color-input-wrap { display: flex; gap: 6px; align-items: center; }
+  .color-input-wrap input[type="color"] { width: 40px; height: 40px; padding: 2px; cursor: pointer; }
+  .color-input-wrap input[type="text"] { flex: 1; }
 
   .btn {
     background: #E6332B;
@@ -68,13 +79,17 @@
     font-weight: 700;
     cursor: pointer;
     width: 100%;
+    transition: all 0.15s;
   }
+  .btn:hover { background: #c92a22; }
   .btn:disabled { opacity: 0.6; cursor: default; }
   .btn-secundario {
     background: transparent;
     border: 1px solid #3A3A3A;
     color: #F3EEE4;
+    margin-top: 12px;
   }
+  .btn-secundario:hover { background: #171717; }
 
   .mensaje {
     background: #171717;
@@ -92,76 +107,102 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     font-size: 13px;
   }
-  .resultado-meta span { display: block; opacity: 0.6; font-size: 11px; margin-bottom: 2px; }
+  .resultado-meta span { display: block; opacity: 0.5; font-size: 10px; margin-bottom: 4px; letter-spacing: 0.05em; text-transform: uppercase; }
 
   .angulo-card {
     background: #171717;
     border: 1px solid #2A2A2A;
-    border-radius: 10px;
-    padding: 18px;
-    margin-bottom: 14px;
-    font-size: 13px;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
   }
   .motivador-tag {
     display: inline-block;
     font-size: 10px;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     color: #E6332B;
     border: 1px solid #E6332B;
     border-radius: 4px;
-    padding: 2px 8px;
-    margin-bottom: 10px;
+    padding: 3px 8px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
   }
-  .dolor-text { opacity: 0.9; margin-bottom: 4px; }
+  .dolor-text { font-size: 13px; opacity: 0.75; margin-bottom: 8px; font-style: italic; }
   .titulo-angulo {
     font-family: 'Archivo Black', sans-serif;
     color: #E6332B;
-    font-size: 15px;
-    margin: 10px 0 14px;
+    font-size: 17px;
+    margin: 12px 0 16px;
   }
-  .copy-block { margin-bottom: 14px; }
-  .copy-block span { display: block; font-size: 11px; opacity: 0.5; margin-bottom: 6px; }
-  .copy-block ul { margin: 0; padding-left: 18px; }
-  .copy-block li { margin-bottom: 4px; }
-  .prompt-imagen-box {
+
+  .bloque {
     border-top: 1px solid #2A2A2A;
-    padding-top: 12px;
-    font-size: 12px;
-    opacity: 0.8;
-    font-style: italic;
-  }
-  .card-footer {
+    padding-top: 14px;
     margin-top: 14px;
-    text-align: right;
   }
+  .bloque-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .bloque-label { font-size: 10px; opacity: 0.5; letter-spacing: 0.06em; text-transform: uppercase; }
+  .bloque-contenido { font-size: 13px; line-height: 1.6; }
+  .bloque-contenido ul { list-style: none; padding: 0; margin: 0; }
+  .bloque-contenido li { padding: 4px 0; }
+  .bloque-contenido li::before { content: "→ "; color: #E6332B; }
+  .prompt-box {
+    background: #0D0D0D;
+    border: 1px solid #2A2A2A;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    line-height: 1.55;
+    color: #F3EEE4;
+    opacity: 0.9;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .adaptaciones-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .adaptacion-box {
+    background: #0D0D0D;
+    border: 1px solid #2A2A2A;
+    border-radius: 6px;
+    padding: 10px 12px;
+  }
+  .adaptacion-tag { font-size: 10px; color: #E6332B; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+  .adaptacion-texto { font-size: 12px; opacity: 0.9; line-height: 1.5; }
+  .gancho-box {
+    background: #0D0D0D;
+    border: 1px solid #E6332B;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #F3EEE4;
+  }
+
   .copiar-btn {
     background: transparent;
     border: 1px solid #3A3A3A;
     color: #F3EEE4;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    padding: 6px 12px;
-    border-radius: 6px;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 5px;
     cursor: pointer;
+    opacity: 0.75;
   }
-  .copiar-btn.copiado { border-color: #E6332B; color: #E6332B; }
+  .copiar-btn:hover { opacity: 1; }
+  .copiar-btn.copiado { border-color: #E6332B; color: #E6332B; opacity: 1; }
 
-  .uso-footer {
-    font-size: 12px;
-    opacity: 0.65;
-    margin: 24px 0;
-    text-align: center;
-  }
+  .card-footer { margin-top: 16px; text-align: right; }
+  .uso-footer { font-size: 12px; opacity: 0.6; margin: 24px 0 20px; text-align: center; }
 
-  footer {
-    text-align: center;
-    font-size: 12px;
-    opacity: 0.5;
-    padding: 40px 24px;
-  }
+  footer { text-align: center; font-size: 12px; opacity: 0.4; padding: 40px 24px; }
 </style>
 </head>
 <body>
@@ -172,39 +213,113 @@
 </header>
 
 <main>
+  <!-- Vista sin token -->
   <div id="vista-sin-token" style="display:none;">
     <div class="eyebrow">Método 101</div>
     <h1>Este link no es válido</h1>
     <div class="mensaje">
-      No encontramos un acceso en este link. Si ya compraste, revisa el correo o la página de gracias para el link correcto. Si no has comprado, puedes hacerlo <a href="https://felipecrespo.cl/metodo101">acá</a>.
+      No encontramos un acceso en este link. Si ya compraste, revisa el correo o la página de gracias para el link correcto. Si no has comprado, <a href="https://felipecrespo.cl/metodo101/">puedes hacerlo acá</a>.
     </div>
   </div>
 
+  <!-- Vista onboarding: primera vez o si el perfil no está guardado -->
+  <div id="vista-onboarding" style="display:none;">
+    <div class="eyebrow">Paso previo · una sola vez</div>
+    <h1>Cuéntame de tu marca</h1>
+    <p class="subtitulo">Con esto adaptamos el copy, los prompts de imagen y el lettering al estilo de tu local. Toma 90 segundos.</p>
+
+    <div id="onboarding-error" class="mensaje" style="display:none;"></div>
+
+    <div class="campo">
+      <label>1. Personalidad de tu marca <span style="opacity:0.5">(elige 1 a 3)</span></label>
+      <div class="personalidad-grid" id="personalidad-grid">
+        <button type="button" class="chip-btn" data-valor="directo">Directo</button>
+        <button type="button" class="chip-btn" data-valor="cercano">Cercano</button>
+        <button type="button" class="chip-btn" data-valor="premium">Premium</button>
+        <button type="button" class="chip-btn" data-valor="disruptivo">Disruptivo</button>
+        <button type="button" class="chip-btn" data-valor="familiar">Familiar</button>
+        <button type="button" class="chip-btn" data-valor="divertido">Divertido</button>
+      </div>
+    </div>
+
+    <div class="campo">
+      <label>2. Paleta principal</label>
+      <div class="paleta-row">
+        <div>
+          <label style="opacity:0.5; font-size:11px;">Color principal</label>
+          <div class="color-input-wrap">
+            <input type="color" id="color-principal" value="#E6332B">
+            <input type="text" id="color-principal-hex" value="#E6332B" maxlength="7">
+          </div>
+        </div>
+        <div>
+          <label style="opacity:0.5; font-size:11px;">Color acento</label>
+          <div class="color-input-wrap">
+            <input type="color" id="color-acento" value="#0D0D0D">
+            <input type="text" id="color-acento-hex" value="#0D0D0D" maxlength="7">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="campo">
+      <label>3. Tipografía preferida</label>
+      <select id="tipografia">
+        <option value="Archivo Black">Archivo Black (impactante, tipo cartel)</option>
+        <option value="Playfair Display">Playfair Display (editorial, elegante)</option>
+        <option value="Poppins">Poppins (moderna, redonda)</option>
+        <option value="Bebas Neue">Bebas Neue (delgada, urbana)</option>
+        <option value="DM Sans">DM Sans (limpia, versátil)</option>
+        <option value="no definida">No lo sé — que la elija el método</option>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label>4. Estilo visual de tus gráficas</label>
+      <select id="referencia_visual">
+        <option value="fotografia_producto">Fotografía real del producto</option>
+        <option value="editorial">Estética editorial (tipo revista de comida)</option>
+        <option value="ilustracion">Ilustración</option>
+        <option value="flat_design">Flat design geométrico</option>
+        <option value="no_definida">No lo sé — que lo decida el método</option>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label>5. Tono de voz <span style="opacity:0.5">(1-2 frases ejemplo)</span></label>
+      <textarea id="tono_voz" placeholder="Ejemplo: 'Pídelo antes que se acabe, cabrón.' o 'La mesa está lista, tú decides cuándo llegas.'"></textarea>
+    </div>
+
+    <button class="btn" id="btn-guardar-perfil">Guardar y empezar →</button>
+  </div>
+
+  <!-- Vista generador principal -->
   <div id="vista-generador" style="display:none;">
     <div class="eyebrow">Método 101</div>
-    <h1>Genera tu estrategia</h1>
+    <h1>Arma tu estrategia</h1>
     <div class="estado-acceso" id="estado-acceso"></div>
 
     <div id="mensaje-error" class="mensaje" style="display:none;"></div>
 
     <form id="form-generador">
       <div class="campo">
-        <label for="rubro-input">Rubro</label>
-        <input type="text" id="rubro-input" placeholder="clínica dental, tienda de ropa, veterinaria..." />
+        <label for="rubro-input">Tu rubro</label>
+        <input type="text" id="rubro-input" placeholder="hamburguesería especialidad smash, pizzería napolitana, cafetería especialidad..." />
       </div>
       <div class="campo">
-        <label for="oferta-input">Oferta específica</label>
-        <input type="text" id="oferta-input" placeholder="plan de vacunas mensual, no 'servicios veterinarios'" />
+        <label for="oferta-input">Oferta puntual</label>
+        <input type="text" id="oferta-input" placeholder="burger del mes: doble, cheddar, cebolla morada, salsa trufada, con papas y bebida $11.900" />
       </div>
-      <p class="hint">Elige un producto puntual con demanda real y buen margen — no toda tu carta.</p>
+      <p class="hint">Sé específico con la oferta — un producto puntual, no toda la carta.</p>
       <button type="submit" class="btn" id="btn-generar">Generar estrategia</button>
+      <button type="button" class="btn btn-secundario" id="btn-editar-perfil">Editar perfil de marca</button>
     </form>
 
     <div id="resultado">
-      <h2 style="font-family:'Archivo Black',sans-serif; font-size:18px; margin:0 0 4px;">Tu estrategia</h2>
+      <h2>Tu estrategia</h2>
       <div class="resultado-meta">
-        <div><span>RUBRO</span><span id="resultado-rubro"></span></div>
-        <div><span>OFERTA</span><span id="resultado-oferta"></span></div>
+        <div><span>Rubro</span><span id="resultado-rubro"></span></div>
+        <div><span>Oferta</span><span id="resultado-oferta"></span></div>
       </div>
       <div id="angulos-container"></div>
       <div class="uso-footer" id="uso-footer"></div>
@@ -213,9 +328,7 @@
   </div>
 </main>
 
-<footer>
-  Felipe Crespo · © 2026 · Método 101
-</footer>
+<footer>Felipe Crespo · © 2026 · Método 101</footer>
 
 <script>
   const WORKER_URL = 'https://anthropic-proxy.fcrespo.workers.dev';
@@ -223,7 +336,163 @@
   const token = params.get('token');
 
   const vistaSinToken = document.getElementById('vista-sin-token');
+  const vistaOnboarding = document.getElementById('vista-onboarding');
   const vistaGenerador = document.getElementById('vista-generador');
+
+  const MENSAJES_ERROR = {
+    token_invalido: 'Este link no es válido. Revisa el correo o la página de gracias para el link correcto.',
+    token_faltante: 'Falta el link de acceso. Revisa que copiaste la URL completa.',
+    sin_usos_restantes: 'Ya usaste tus 3 estrategias de este paquete. Si quieres seguir generando, revisa el acceso anual.',
+    acceso_expirado: 'Tu acceso anual venció. Renueva para seguir generando estrategias.',
+    rubro_invalido: 'Escribe un rubro real para tu local.',
+    oferta_invalida: 'La oferta no puede ser igual al rubro — sé específico con el producto puntual.',
+    rubro_fuera_de_dominio: 'Método 101 está enfocado en locales de comida. Escribe un rubro de comida.',
+    personalidad_requerida: 'Elige al menos una personalidad para tu marca.',
+    sin_perfil: 'Necesitamos tu perfil de marca primero.',
+  };
+
+  // ============================================================
+  // Bootstrap: sin token → vista sin-token; con token → chequea perfil
+  // ============================================================
+  async function bootstrap() {
+    if (!token) {
+      vistaSinToken.style.display = 'block';
+      return;
+    }
+    try {
+      const res = await fetch(WORKER_URL + '/perfil-marca?token=' + encodeURIComponent(token));
+      const data = await res.json();
+      if (data.error === 'token_invalido') {
+        vistaSinToken.style.display = 'block';
+        return;
+      }
+      if (!data.tiene_perfil) {
+        mostrarOnboarding();
+      } else {
+        mostrarGenerador();
+      }
+    } catch (e) {
+      // Si falla el fetch, asumimos que hay que hacer onboarding — el POST filtrará el token inválido
+      mostrarOnboarding();
+    }
+  }
+
+  // ============================================================
+  // ONBOARDING
+  // ============================================================
+  const personalidadSeleccionada = new Set();
+  document.querySelectorAll('#personalidad-grid .chip-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const valor = btn.dataset.valor;
+      if (personalidadSeleccionada.has(valor)) {
+        personalidadSeleccionada.delete(valor);
+        btn.classList.remove('activo');
+      } else if (personalidadSeleccionada.size < 3) {
+        personalidadSeleccionada.add(valor);
+        btn.classList.add('activo');
+      }
+    });
+  });
+
+  // Sync color picker ↔ text hex
+  ['principal', 'acento'].forEach((k) => {
+    const picker = document.getElementById('color-' + k);
+    const texto = document.getElementById('color-' + k + '-hex');
+    picker.addEventListener('input', () => { texto.value = picker.value.toUpperCase(); });
+    texto.addEventListener('input', () => {
+      const v = texto.value.trim();
+      if (/^#[0-9A-Fa-f]{6}$/.test(v)) picker.value = v;
+    });
+  });
+
+  document.getElementById('btn-guardar-perfil').addEventListener('click', async () => {
+    const errorBox = document.getElementById('onboarding-error');
+    errorBox.style.display = 'none';
+
+    if (personalidadSeleccionada.size === 0) {
+      errorBox.textContent = MENSAJES_ERROR.personalidad_requerida;
+      errorBox.style.display = 'block';
+      return;
+    }
+
+    const perfil = {
+      personalidad: Array.from(personalidadSeleccionada),
+      paleta: {
+        principal: document.getElementById('color-principal-hex').value.trim(),
+        acento: document.getElementById('color-acento-hex').value.trim(),
+      },
+      tipografia: document.getElementById('tipografia').value,
+      referencia_visual: document.getElementById('referencia_visual').value,
+      tono_voz: document.getElementById('tono_voz').value.trim(),
+    };
+
+    const btn = document.getElementById('btn-guardar-perfil');
+    btn.disabled = true;
+    btn.textContent = 'Guardando...';
+
+    try {
+      const res = await fetch(WORKER_URL + '/perfil-marca', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, perfil }),
+      });
+      const data = await res.json();
+      if (data.guardado) {
+        mostrarGenerador();
+      } else {
+        errorBox.textContent = MENSAJES_ERROR[data.error] || 'No pudimos guardar. Intenta de nuevo.';
+        errorBox.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Guardar y empezar →';
+      }
+    } catch (e) {
+      errorBox.textContent = 'Error de conexión. Intenta de nuevo.';
+      errorBox.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Guardar y empezar →';
+    }
+  });
+
+  function mostrarOnboarding() {
+    vistaOnboarding.style.display = 'block';
+    vistaGenerador.style.display = 'none';
+  }
+  function mostrarGenerador() {
+    vistaOnboarding.style.display = 'none';
+    vistaGenerador.style.display = 'block';
+  }
+
+  document.getElementById('btn-editar-perfil').addEventListener('click', async () => {
+    // Pre-cargar el perfil actual y mostrar el onboarding
+    try {
+      const res = await fetch(WORKER_URL + '/perfil-marca?token=' + encodeURIComponent(token));
+      const data = await res.json();
+      if (data.tiene_perfil) {
+        const p = data.perfil;
+        personalidadSeleccionada.clear();
+        document.querySelectorAll('#personalidad-grid .chip-btn').forEach((btn) => {
+          if (p.personalidad.includes(btn.dataset.valor)) {
+            btn.classList.add('activo');
+            personalidadSeleccionada.add(btn.dataset.valor);
+          } else {
+            btn.classList.remove('activo');
+          }
+        });
+        document.getElementById('color-principal-hex').value = p.paleta.principal || '#E6332B';
+        document.getElementById('color-principal').value = p.paleta.principal || '#E6332B';
+        document.getElementById('color-acento-hex').value = p.paleta.acento || '#0D0D0D';
+        document.getElementById('color-acento').value = p.paleta.acento || '#0D0D0D';
+        document.getElementById('tipografia').value = p.tipografia || 'no definida';
+        document.getElementById('referencia_visual').value = p.referencia_visual || 'no_definida';
+        document.getElementById('tono_voz').value = p.tono_voz || '';
+      }
+    } catch (e) {}
+    mostrarOnboarding();
+  });
+
+  // ============================================================
+  // GENERADOR
+  // ============================================================
   const form = document.getElementById('form-generador');
   const btnGenerar = document.getElementById('btn-generar');
   const btnOtra = document.getElementById('btn-otra');
@@ -231,86 +500,148 @@
   const resultado = document.getElementById('resultado');
   const estadoAcceso = document.getElementById('estado-acceso');
 
-  if (!token) {
-    vistaSinToken.style.display = 'block';
-  } else {
-    vistaGenerador.style.display = 'block';
-  }
-
-  const MENSAJES_ERROR = {
-    token_invalido: 'Este link no es válido. Revisa el correo o la página de gracias para el link correcto.',
-    token_faltante: 'Falta el link de acceso. Revisa que copiaste la URL completa.',
-    sin_usos_restantes: 'Ya usaste tus 3 estrategias de este paquete. Si quieres seguir generando, revisa el acceso anual.',
-    acceso_expirado: 'Tu acceso anual venció. Renueva para seguir generando estrategias.',
-    rubro_invalido: 'Escribe un rubro real para tu negocio.',
-    oferta_invalida: 'La oferta no puede ser igual al rubro — sé más específico con el producto puntual.',
-  };
-
   function mostrarError(codigo) {
-    const texto = MENSAJES_ERROR[codigo] || 'Hubo un problema generando tu estrategia. Intenta de nuevo en un momento.';
+    const texto = MENSAJES_ERROR[codigo] || 'Hubo un problema. Intenta de nuevo en un momento.';
     let extra = '';
     if (codigo === 'sin_usos_restantes' || codigo === 'acceso_expirado') {
-      extra = ' <a href="https://felipecrespo.cl/metodo101">Ver planes →</a>';
+      extra = ' <a href="https://felipecrespo.cl/metodo101/">Ver planes →</a>';
     }
     mensajeError.innerHTML = texto + extra;
     mensajeError.style.display = 'block';
   }
+  function ocultarError() { mensajeError.style.display = 'none'; }
 
-  function ocultarError() {
-    mensajeError.style.display = 'none';
+  async function copiarAlPortapapeles(texto, btn) {
+    try {
+      await navigator.clipboard.writeText(texto);
+      const original = btn.textContent;
+      btn.textContent = 'Copiado ✓';
+      btn.classList.add('copiado');
+      setTimeout(() => { btn.textContent = original; btn.classList.remove('copiado'); }, 1600);
+    } catch (e) {
+      alert('No pudimos copiar. Selecciona el texto y copia manualmente.');
+    }
   }
 
-  function formatearAngulo(item) {
-    return item.motivador.toUpperCase() + ' · ' + item.angulo.toUpperCase() + '\n' +
-      'Dolor: ' + item.dolor + '\n\n' +
-      'Títulos:\n- ' + item.titulos.join('\n- ') + '\n\n' +
-      'Textos:\n- ' + item.textos.join('\n- ') + '\n\n' +
-      'Prompt de imagen:\n' + item.prompt_imagen;
+  function formatearAnguloCompleto(item) {
+    return `${item.motivador.toUpperCase()} · ${item.angulo.toUpperCase()}
+Dolor: ${item.dolor}
+
+TÍTULOS
+- ${item.titulos.join('\n- ')}
+
+TEXTOS
+- ${item.textos.join('\n- ')}
+
+PROMPT IMAGEN
+${item.prompt_imagen}
+
+PROMPT LETTERING
+${item.prompt_lettering}
+
+FEED (4:5): ${item.adaptaciones.feed}
+STORY (9:16): ${item.adaptaciones.story}
+
+GANCHO REEL: ${item.gancho_reel}`;
   }
 
   function renderAngulos(angulos) {
-    const contenedor = document.getElementById('angulos-container');
-    contenedor.innerHTML = angulos.map((item, i) => `
-      <div class="angulo-card">
-        <span class="motivador-tag">${item.motivador}</span>
-        <div class="dolor-text">${item.dolor}</div>
-        <div class="titulo-angulo">${item.angulo}</div>
-        <div class="copy-block">
-          <span>TÍTULOS</span>
-          <ul>${item.titulos.map(t => `<li>${t}</li>`).join('')}</ul>
+    const cont = document.getElementById('angulos-container');
+    cont.innerHTML = angulos.map((item, i) => `
+      <div class="angulo-card" data-index="${i}">
+        <span class="motivador-tag">${item.motivador} · ${item.angulo}</span>
+        <div class="dolor-text">"${item.dolor}"</div>
+        <div class="titulo-angulo">${item.titulos[0]}</div>
+
+        <div class="bloque">
+          <div class="bloque-header">
+            <span class="bloque-label">Títulos (Meta)</span>
+            <button class="copiar-btn" data-copy="titulos-${i}">Copiar</button>
+          </div>
+          <div class="bloque-contenido"><ul>${item.titulos.map((t) => `<li>${t}</li>`).join('')}</ul></div>
         </div>
-        <div class="copy-block">
-          <span>TEXTOS</span>
-          <ul>${item.textos.map(t => `<li>${t}</li>`).join('')}</ul>
+
+        <div class="bloque">
+          <div class="bloque-header">
+            <span class="bloque-label">Textos principales</span>
+            <button class="copiar-btn" data-copy="textos-${i}">Copiar</button>
+          </div>
+          <div class="bloque-contenido"><ul>${item.textos.map((t) => `<li>${t}</li>`).join('')}</ul></div>
         </div>
-        <div class="prompt-imagen-box">${item.prompt_imagen}</div>
+
+        <div class="bloque">
+          <div class="bloque-header">
+            <span class="bloque-label">Prompt · imagen</span>
+            <button class="copiar-btn" data-copy="prompt-imagen-${i}">Copiar</button>
+          </div>
+          <div class="prompt-box">${item.prompt_imagen}</div>
+        </div>
+
+        <div class="bloque">
+          <div class="bloque-header">
+            <span class="bloque-label">Prompt · lettering</span>
+            <button class="copiar-btn" data-copy="prompt-lettering-${i}">Copiar</button>
+          </div>
+          <div class="prompt-box">${item.prompt_lettering}</div>
+        </div>
+
+        <div class="bloque">
+          <span class="bloque-label" style="display:block; margin-bottom:8px;">Adaptaciones</span>
+          <div class="adaptaciones-grid">
+            <div class="adaptacion-box">
+              <div class="adaptacion-tag">Feed · 4:5</div>
+              <div class="adaptacion-texto">${item.adaptaciones.feed}</div>
+            </div>
+            <div class="adaptacion-box">
+              <div class="adaptacion-tag">Story · 9:16</div>
+              <div class="adaptacion-texto">${item.adaptaciones.story}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bloque">
+          <div class="bloque-header">
+            <span class="bloque-label">Gancho de reel</span>
+            <button class="copiar-btn" data-copy="gancho-${i}">Copiar</button>
+          </div>
+          <div class="gancho-box">${item.gancho_reel}</div>
+        </div>
+
         <div class="card-footer">
-          <button class="copiar-btn" data-index="${i}">Copiar todo</button>
+          <button class="copiar-btn" data-copy="todo-${i}" style="border-color:#E6332B; color:#E6332B;">Copiar TODO el ángulo</button>
         </div>
       </div>
     `).join('');
 
-    contenedor.querySelectorAll('.copiar-btn').forEach((btn) => {
-      btn.addEventListener('click', async () => {
-        const item = angulos[parseInt(btn.dataset.index, 10)];
-        try {
-          await navigator.clipboard.writeText(formatearAngulo(item));
-          btn.textContent = 'Copiado ✓';
-          btn.classList.add('copiado');
-          setTimeout(() => { btn.textContent = 'Copiar todo'; btn.classList.remove('copiado'); }, 1800);
-        } catch (e) {
-          alert('No pudimos copiar automáticamente. Selecciona el texto manualmente.');
-        }
+    // Handlers de copiar
+    cont.querySelectorAll('.copiar-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const raw = btn.dataset.copy || '';
+        const [tipo, idxStr] = raw.split('-').length > 2 ? [raw.split('-').slice(0, -1).join('-'), raw.split('-').pop()] : raw.split('-');
+        const idx = parseInt(idxStr, 10);
+        const item = angulos[idx];
+        if (!item) return;
+        let texto = '';
+        if (tipo === 'titulos') texto = item.titulos.join('\n');
+        else if (tipo === 'textos') texto = item.textos.join('\n');
+        else if (tipo === 'prompt-imagen') texto = item.prompt_imagen;
+        else if (tipo === 'prompt-lettering') texto = item.prompt_lettering;
+        else if (tipo === 'gancho') texto = item.gancho_reel;
+        else if (tipo === 'todo') texto = formatearAnguloCompleto(item);
+        if (texto) copiarAlPortapapeles(texto, btn);
       });
     });
   }
 
   function actualizarEstadoAcceso(data) {
+    const usoFooter = document.getElementById('uso-footer');
     if (data.acceso_completo) {
       const fecha = new Date(data.expira);
-      estadoAcceso.textContent = 'Acceso completo · vigente hasta ' + fecha.toLocaleDateString('es-CL');
+      estadoAcceso.textContent = 'Acceso anual · vigente hasta ' + fecha.toLocaleDateString('es-CL');
+      usoFooter.textContent = 'Acceso ilimitado — genera cuantas quieras.';
     } else if (typeof data.usos_restantes === 'number') {
       estadoAcceso.textContent = 'Te quedan ' + data.usos_restantes + ' estrategia' + (data.usos_restantes === 1 ? '' : 's');
+      usoFooter.textContent = 'Te quedan ' + data.usos_restantes + ' estrategia' + (data.usos_restantes === 1 ? '' : 's') + ' en el paquete.';
     }
   }
 
@@ -327,6 +658,12 @@
       });
       const data = await res.json();
 
+      if (data.error === 'sin_perfil') {
+        mostrarOnboarding();
+        btnGenerar.disabled = false;
+        btnGenerar.textContent = 'Generar estrategia';
+        return;
+      }
       if (data.error) {
         mostrarError(data.error);
         btnGenerar.disabled = false;
@@ -370,6 +707,8 @@
     document.getElementById('oferta-input').value = '';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+
+  bootstrap();
 </script>
 
 </body>
