@@ -166,24 +166,6 @@
     font-family: 'JetBrains Mono', monospace;
   }
   .adaptaciones-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .adaptacion-box {
-    background: #0D0D0D;
-    border: 1px solid #2A2A2A;
-    border-radius: 6px;
-    padding: 10px 12px;
-  }
-  .adaptacion-tag { font-size: 10px; color: #E6332B; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
-  .adaptacion-texto { font-size: 12px; opacity: 0.9; line-height: 1.5; }
-  .gancho-box {
-    background: #0D0D0D;
-    border: 1px solid #E6332B;
-    border-radius: 6px;
-    padding: 10px 12px;
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 14px;
-    line-height: 1.4;
-    color: #F3EEE4;
-  }
 
   .copiar-btn {
     background: transparent;
@@ -276,6 +258,16 @@
     <div id="onboarding-error" class="mensaje" style="display:none;"></div>
 
     <div class="campo">
+      <label>Tu nombre</label>
+      <input type="text" id="ob-nombre" placeholder="Como quieres que te llamemos" />
+    </div>
+
+    <div class="campo">
+      <label>Tu correo</label>
+      <input type="text" id="ob-email" placeholder="Para enviarte tu acceso y novedades del método" />
+    </div>
+
+    <div class="campo">
       <label>1. Personalidad de tu marca <span style="opacity:0.5">(elige 1 a 3)</span></label>
       <div class="personalidad-grid" id="personalidad-grid">
         <button type="button" class="chip-btn" data-valor="directo">Directo</button>
@@ -348,8 +340,8 @@
 
     <form id="form-generador">
       <div class="campo">
-        <label for="rubro-input">Tu rubro</label>
-        <input type="text" id="rubro-input" placeholder="hamburguesería especialidad smash, pizzería napolitana, cafetería especialidad..." />
+        <label for="rubro-input">¿De qué es tu local?</label>
+        <input type="text" id="rubro-input" placeholder="hamburguesería de smash, pizzería napolitana, cafetería de especialidad..." />
       </div>
       <div class="campo">
         <label for="oferta-input">Oferta puntual</label>
@@ -399,6 +391,8 @@
     oferta_invalida: 'La oferta no puede ser igual al rubro — sé específico con el producto puntual.',
     rubro_fuera_de_dominio: 'Método 101 está enfocado en locales de comida. Escribe un rubro de comida.',
     personalidad_requerida: 'Elige al menos una personalidad para tu marca.',
+    nombre_requerido: 'Escribe tu nombre para continuar.',
+    email_invalido: 'Escribe un correo válido para continuar.',
     sin_perfil: 'Necesitamos tu perfil de marca primero.',
   };
 
@@ -460,6 +454,19 @@
     const errorBox = document.getElementById('onboarding-error');
     errorBox.style.display = 'none';
 
+    const nombre = document.getElementById('ob-nombre').value.trim();
+    const email = document.getElementById('ob-email').value.trim();
+
+    if (!nombre) {
+      errorBox.textContent = MENSAJES_ERROR.nombre_requerido;
+      errorBox.style.display = 'block';
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errorBox.textContent = MENSAJES_ERROR.email_invalido;
+      errorBox.style.display = 'block';
+      return;
+    }
     if (personalidadSeleccionada.size === 0) {
       errorBox.textContent = MENSAJES_ERROR.personalidad_requerida;
       errorBox.style.display = 'block';
@@ -485,7 +492,7 @@
       const res = await fetch(WORKER_URL + '/perfil-marca', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token, perfil }),
+        body: JSON.stringify({ token, nombre, email, perfil }),
       });
       const data = await res.json();
       if (data.guardado) {
@@ -520,6 +527,8 @@
       const data = await res.json();
       if (data.tiene_perfil) {
         const p = data.perfil;
+        document.getElementById('ob-nombre').value = p.nombre || '';
+        document.getElementById('ob-email').value = p.email || '';
         personalidadSeleccionada.clear();
         document.querySelectorAll('#personalidad-grid .chip-btn').forEach((btn) => {
           if (p.personalidad.includes(btn.dataset.valor)) {
@@ -574,9 +583,13 @@
     }
   }
 
-  function formatearAnguloCompleto(item) {
-    return `${item.motivador.toUpperCase()} · ${item.angulo.toUpperCase()}
-Dolor: ${item.dolor}
+  function promptToJson(obj) {
+    return JSON.stringify(obj, null, 2);
+  }
+
+  function formatearCreativoCompleto(item, idx) {
+    return `CREATIVO ${idx + 1}
+Dolor que ataca: ${item.dolor}
 
 TÍTULOS
 - ${item.titulos.join('\n- ')}
@@ -584,23 +597,18 @@ TÍTULOS
 TEXTOS
 - ${item.textos.join('\n- ')}
 
-PROMPT IMAGEN
-${item.prompt_imagen}
+PROMPT FEED (4:5)
+${promptToJson(item.prompt_feed)}
 
-PROMPT LETTERING
-${item.prompt_lettering}
-
-FEED (4:5): ${item.adaptaciones.feed}
-STORY (9:16): ${item.adaptaciones.story}
-
-GANCHO REEL: ${item.gancho_reel}`;
+PROMPT STORY (9:16)
+${promptToJson(item.prompt_story)}`;
   }
 
-  function renderAngulos(angulos) {
+  function renderCreativos(creativos) {
     const cont = document.getElementById('angulos-container');
-    cont.innerHTML = angulos.map((item, i) => `
+    cont.innerHTML = creativos.map((item, i) => `
       <div class="angulo-card" data-index="${i}">
-        <span class="motivador-tag">${item.motivador} · ${item.angulo}</span>
+        <span class="motivador-tag">Creativo ${i + 1}</span>
         <div class="dolor-text">"${item.dolor}"</div>
         <div class="titulo-angulo">${item.titulos[0]}</div>
 
@@ -622,44 +630,22 @@ GANCHO REEL: ${item.gancho_reel}`;
 
         <div class="bloque">
           <div class="bloque-header">
-            <span class="bloque-label">Prompt · imagen</span>
-            <button class="copiar-btn" data-copy="prompt-imagen-${i}">Copiar</button>
+            <span class="bloque-label">Prompt · Feed (4:5)</span>
+            <button class="copiar-btn" data-copy="prompt-feed-${i}">Copiar</button>
           </div>
-          <div class="prompt-box">${item.prompt_imagen}</div>
+          <div class="prompt-box"><pre style="white-space:pre-wrap; margin:0; font-family:inherit;">${promptToJson(item.prompt_feed)}</pre></div>
         </div>
 
         <div class="bloque">
           <div class="bloque-header">
-            <span class="bloque-label">Prompt · lettering</span>
-            <button class="copiar-btn" data-copy="prompt-lettering-${i}">Copiar</button>
+            <span class="bloque-label">Prompt · Story (9:16)</span>
+            <button class="copiar-btn" data-copy="prompt-story-${i}">Copiar</button>
           </div>
-          <div class="prompt-box">${item.prompt_lettering}</div>
-        </div>
-
-        <div class="bloque">
-          <span class="bloque-label" style="display:block; margin-bottom:8px;">Adaptaciones</span>
-          <div class="adaptaciones-grid">
-            <div class="adaptacion-box">
-              <div class="adaptacion-tag">Feed · 4:5</div>
-              <div class="adaptacion-texto">${item.adaptaciones.feed}</div>
-            </div>
-            <div class="adaptacion-box">
-              <div class="adaptacion-tag">Story · 9:16</div>
-              <div class="adaptacion-texto">${item.adaptaciones.story}</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bloque">
-          <div class="bloque-header">
-            <span class="bloque-label">Gancho de reel</span>
-            <button class="copiar-btn" data-copy="gancho-${i}">Copiar</button>
-          </div>
-          <div class="gancho-box">${item.gancho_reel}</div>
+          <div class="prompt-box"><pre style="white-space:pre-wrap; margin:0; font-family:inherit;">${promptToJson(item.prompt_story)}</pre></div>
         </div>
 
         <div class="card-footer">
-          <button class="copiar-btn" data-copy="todo-${i}" style="border-color:#E6332B; color:#E6332B;">Copiar TODO el ángulo</button>
+          <button class="copiar-btn" data-copy="todo-${i}" style="border-color:#E6332B; color:#E6332B;">Copiar TODO el creativo</button>
         </div>
       </div>
     `).join('');
@@ -668,17 +654,16 @@ GANCHO REEL: ${item.gancho_reel}`;
     cont.querySelectorAll('.copiar-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
         const raw = btn.dataset.copy || '';
-        const [tipo, idxStr] = raw.split('-').length > 2 ? [raw.split('-').slice(0, -1).join('-'), raw.split('-').pop()] : raw.split('-');
-        const idx = parseInt(idxStr, 10);
-        const item = angulos[idx];
+        const idx = parseInt(raw.split('-').pop(), 10);
+        const tipo = raw.split('-').slice(0, -1).join('-');
+        const item = creativos[idx];
         if (!item) return;
         let texto = '';
         if (tipo === 'titulos') texto = item.titulos.join('\n');
         else if (tipo === 'textos') texto = item.textos.join('\n');
-        else if (tipo === 'prompt-imagen') texto = item.prompt_imagen;
-        else if (tipo === 'prompt-lettering') texto = item.prompt_lettering;
-        else if (tipo === 'gancho') texto = item.gancho_reel;
-        else if (tipo === 'todo') texto = formatearAnguloCompleto(item);
+        else if (tipo === 'prompt-feed') texto = promptToJson(item.prompt_feed);
+        else if (tipo === 'prompt-story') texto = promptToJson(item.prompt_story);
+        else if (tipo === 'todo') texto = formatearCreativoCompleto(item, idx);
         if (texto) copiarAlPortapapeles(texto, btn);
       });
     });
@@ -724,7 +709,7 @@ GANCHO REEL: ${item.gancho_reel}`;
 
       document.getElementById('resultado-rubro').textContent = data.rubro;
       document.getElementById('resultado-oferta').textContent = data.oferta;
-      renderAngulos(data.angulos);
+      renderCreativos(data.creativos || []);
       actualizarEstadoAcceso(data);
 
       form.style.display = 'none';
