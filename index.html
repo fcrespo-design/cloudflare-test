@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Método 101 — Anuncios de Meta para locales de comida, listos en segundos | Felipe Crespo</title>
-<meta name="description" content="Para dueños de locales de comida. Escribe tu rubro y tu oferta. Recibes 3 versiones del anuncio con copy, prompts de imagen y lettering, adaptaciones y gancho de reel. Desde $29.990 CLP.">
+<title>Felipe Crespo — Marcas de comida que venden</title>
+<meta name="description" content="Levanté 101homies desde la cocina de mi casa a dos locales. Marca, anuncios en Meta, campañas y embudos de venta. Entra a la cohorte fundadora de la comunidad Método 101 o postula para que lo armemos juntos.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://felipecrespo.cl/">
-<meta property="og:title" content="Método 101 — Anuncios de Meta para locales de comida, listos en segundos">
-<meta property="og:description" content="Escribe tu rubro y tu oferta. En segundos tienes 3 versiones del anuncio listas. Solo para locales de comida.">
+<meta property="og:title" content="Felipe Crespo — Marcas de comida que venden. Primero la mía.">
+<meta property="og:description" content="Marca, anuncios, campañas y embudos probados en mis propios locales. Cohorte fundadora de la comunidad Método 101: 30 cupos.">
 <meta property="og:url" content="https://felipecrespo.cl/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CL">
+<meta property="og:image" content="https://res.cloudinary.com/dy8xhueb1/image/upload/f_auto/q_auto/Captura_de_pantalla_2026-05-16_a_la_s_1.59.14_p.m._pa1yqe.jpg">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,350 +23,494 @@
   --ivory: #F3EEE4; --panel: #ECE6D8; --surface: #FFFFFF;
   --ink: #0D0D0D; --red: #E6332B; --red-dark: #c92a22; --red-light: #FBEAE8;
   --muted: #6b6b63; --border: rgba(13,13,13,0.1);
+  --ivory-60: rgba(243,238,228,0.62); --ivory-40: rgba(243,238,228,0.42); --ivory-line: rgba(243,238,228,0.12);
 }
-body { font-family: 'DM Sans', sans-serif; background: var(--ivory); color: var(--ink); overflow-x: hidden; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--ivory); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+.mono { font-family: 'JetBrains Mono', monospace; }
 
-nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2.5rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(243,238,228,0.94); backdrop-filter: blur(10px); z-index: 20; }
-.logo { font-family: 'Archivo Black', sans-serif; font-size: 1rem; line-height: 1.1; color: var(--ink); text-transform: uppercase; letter-spacing: -0.01em; }
-.logo span { display: block; font-size: 0.62rem; font-family: 'JetBrains Mono', monospace; font-weight: 500; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
-.nav-cta { font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--ivory); background: var(--ink); text-decoration: none; padding: 0.55rem 1.25rem; border-radius: 8px; transition: all 0.2s; border: none; cursor: pointer; }
+/* NAV */
+nav { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.1rem 2.5rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(243,238,228,0.94); backdrop-filter: blur(10px); z-index: 20; }
+.logo { font-family: 'Archivo Black', sans-serif; font-size: 1rem; line-height: 1.1; text-transform: uppercase; text-decoration: none; }
+.logo span { display: block; font-size: 0.6rem; font-family: 'JetBrains Mono', monospace; font-weight: 500; color: var(--muted); letter-spacing: 0.08em; margin-top: 4px; }
+.nav-links { display: flex; align-items: center; gap: 1.75rem; }
+.nav-links a:not(.nav-cta) { font-size: 0.85rem; text-decoration: none; color: var(--muted); }
+.nav-links a:not(.nav-cta):hover { color: var(--ink); }
+.nav-cta { font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--ivory); background: var(--ink); text-decoration: none; padding: 0.55rem 1.15rem; border-radius: 8px; transition: background 0.2s; white-space: nowrap; }
 .nav-cta:hover { background: var(--red); }
 
-.hero { max-width: 800px; margin: 0 auto; padding: 4.5rem 2.5rem 3rem; text-align: center; }
-.hero-tag { display: inline-block; font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--red); background: var(--red-light); padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 1.75rem; }
-.hero h1 { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: clamp(1.9rem, 4.6vw, 3.15rem); line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 1.25rem; color: var(--ink); }
-.hero h1 em { font-style: normal; color: var(--red); }
-.hero > p { font-size: 1.05rem; color: var(--muted); line-height: 1.65; font-weight: 400; max-width: 620px; margin: 0 auto 2.25rem; }
-.hero > p strong { color: var(--ink); font-weight: 600; }
-.cta { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--red); color: var(--ivory); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; padding: 0.95rem 2.1rem; border-radius: 10px; border: none; cursor: pointer; text-decoration: none; transition: all 0.2s; }
-.cta:hover { background: var(--red-dark); transform: translateY(-1px); }
-.cta-sub { display: block; font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; color: var(--muted); margin-top: 0.85rem; }
+/* COMMON */
+section { padding: 5.5rem 2.5rem; }
+.wrap { max-width: 1040px; margin: 0 auto; }
+.label { font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.8rem; }
+h2 { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: clamp(1.6rem, 3vw, 2.35rem); letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 1rem; }
+h2 em, h1 em { font-style: normal; color: var(--red); }
+.intro { font-size: 1rem; color: var(--muted); line-height: 1.7; max-width: 620px; margin-bottom: 3rem; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; padding: 1rem 1.9rem; border-radius: 10px; border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+.btn-red { background: var(--red); color: var(--ivory); }
+.btn-red:hover { background: var(--red-dark); transform: translateY(-1px); }
+.btn-line { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: var(--ivory); }
+.dark { background: var(--ink); color: var(--ivory); }
+.dark .label { color: var(--ivory-40); }
+.dark .intro { color: var(--ivory-60); }
 
-.trust-bar { background: var(--panel); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1rem 2.5rem; }
-.trust-bar-inner { max-width: 780px; margin: 0 auto; display: flex; justify-content: center; gap: 2.25rem; flex-wrap: wrap; }
-.trust-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--muted); }
-.trust-item strong { color: var(--ink); font-weight: 600; }
+/* HERO */
+.hero { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+.hero .wrap { display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 3.5rem; align-items: center; }
+.hero-tag { display: inline-block; font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--red); background: var(--red-light); padding: 0.4rem 0.95rem; border-radius: 100px; margin-bottom: 1.6rem; }
+.hero h1 { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: clamp(2.1rem, 5.2vw, 3.7rem); line-height: 1.05; letter-spacing: -0.015em; margin-bottom: 1.5rem; }
+.hero p { font-size: 1.08rem; color: var(--muted); line-height: 1.7; max-width: 560px; margin-bottom: 2.2rem; }
+.hero p strong { color: var(--ink); font-weight: 600; }
+.hero-ctas { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+.hero-photo { position: relative; }
+.hero-photo img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; border-radius: 16px; border: 1px solid var(--border); display: block; }
+.hero-photo figcaption { position: absolute; left: -1rem; bottom: 1.5rem; background: var(--ink); color: var(--ivory); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; line-height: 1.5; padding: 0.7rem 0.95rem; border-radius: 10px; }
+.hero-photo figcaption strong { color: var(--red); font-weight: 600; }
 
-section { max-width: 900px; margin: 0 auto; padding: 5rem 2.5rem; }
-.section-label { font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.65rem; text-align: center; }
-h2 { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: clamp(1.5rem, 2.6vw, 2.1rem); letter-spacing: -0.01em; line-height: 1.22; color: var(--ink); text-align: center; margin-bottom: 0.75rem; }
-h2 em { font-style: normal; color: var(--red); }
-.section-intro { font-size: 0.95rem; color: var(--muted); text-align: center; max-width: 580px; margin: 0 auto 3rem; line-height: 1.7; }
+/* PROOF */
+.proof { padding-top: 4rem; padding-bottom: 4rem; }
+.proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.5rem; }
+.stat { border: 1px solid var(--ivory-line); border-radius: 12px; padding: 1.4rem 1.2rem; background: rgba(243,238,228,0.03); }
+.stat-num { font-family: 'Archivo Black', sans-serif; font-size: 2rem; color: var(--red); line-height: 1; margin-bottom: 0.55rem; }
+.stat-label { font-size: 0.82rem; color: var(--ivory-60); line-height: 1.45; }
+.proof-head { display: flex; justify-content: space-between; align-items: end; gap: 1rem; flex-wrap: wrap; }
+.proof-head h2 { margin-bottom: 0; font-size: clamp(1.3rem, 2.4vw, 1.75rem); }
+.proof-note { font-size: 0.72rem; color: var(--ivory-40); }
 
-.about { display: grid; grid-template-columns: 200px 1fr; gap: 2.5rem; align-items: center; }
-.about img { width: 200px; height: 240px; object-fit: cover; object-position: center top; border-radius: 14px; border: 1px solid var(--border); }
-.about-copy h2 { text-align: left; margin-bottom: 0.85rem; }
-.about-copy p { font-size: 0.95rem; color: var(--muted); line-height: 1.75; font-weight: 400; margin-bottom: 1rem; }
-.about-copy p strong { color: var(--ink); font-weight: 600; }
+/* CAPACIDADES */
+.caps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.cap { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.6rem 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.cap-num { font-size: 0.7rem; color: var(--red); font-weight: 600; }
+.cap h3 { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: 1.12rem; line-height: 1.25; }
+.cap p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; flex-grow: 1; }
+.cap-proof { font-size: 0.7rem; color: var(--ink); border-top: 1px dashed var(--border); padding-top: 0.75rem; margin-top: 0.3rem; }
 
-.results-section { background: var(--ink); max-width: none; padding: 5rem 2.5rem; }
-.results-inner { max-width: 900px; margin: 0 auto; }
-.results-section .section-label { color: rgba(243,238,228,0.5); }
-.results-section h2 { color: var(--ivory); }
-.results-section .section-intro { color: rgba(243,238,228,0.6); }
-.results-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.25rem; }
-.result-card { background: rgba(243,238,228,0.04); border: 1px solid rgba(243,238,228,0.1); border-radius: 12px; padding: 1.5rem 1.25rem; text-align: center; }
-.result-num { font-family: 'Archivo Black', sans-serif; font-size: 1.85rem; color: var(--red); line-height: 1; margin-bottom: 0.5rem; }
-.result-label { font-size: 0.78rem; color: rgba(243,238,228,0.72); line-height: 1.4; }
-.results-footnote { text-align: center; font-size: 0.78rem; color: rgba(243,238,228,0.4); font-family: 'JetBrains Mono', monospace; }
+/* HISTORIA */
+.story { background: var(--panel); }
+.story .wrap { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 4rem; align-items: start; }
+.story-copy p { font-size: 0.98rem; color: var(--muted); line-height: 1.75; margin-bottom: 1rem; }
+.story-copy p strong { color: var(--ink); font-weight: 600; }
+.timeline { list-style: none; border-left: 2px solid var(--ink); padding-left: 1.6rem; display: flex; flex-direction: column; gap: 1.6rem; }
+.timeline li { position: relative; }
+.timeline li::before { content: ""; position: absolute; left: calc(-1.6rem - 7px); top: 0.3rem; width: 12px; height: 12px; border-radius: 50%; background: var(--ivory); border: 2px solid var(--ink); }
+.timeline li.now::before { background: var(--red); border-color: var(--red); }
+.timeline .when { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.25rem; }
+.timeline strong { display: block; font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: 1.02rem; margin-bottom: 0.2rem; }
+.timeline span.desc { font-size: 0.88rem; color: var(--muted); line-height: 1.55; }
 
-.demo-section { background: var(--ink); max-width: none; padding: 5rem 2.5rem; border-top: 1px solid rgba(243,238,228,0.08); }
-.demo-inner { max-width: 900px; margin: 0 auto; }
-.demo-section .section-label { color: rgba(243,238,228,0.5); }
-.demo-section h2 { color: var(--ivory); }
-.demo-section .section-intro { color: rgba(243,238,228,0.6); }
-.demo-flow { display: grid; grid-template-columns: 0.9fr auto 1.1fr; gap: 1.75rem; align-items: center; }
-.demo-input { background: rgba(243,238,228,0.05); border: 1px solid rgba(243,238,228,0.12); border-radius: 14px; padding: 1.5rem; }
-.demo-input-label { font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: rgba(243,238,228,0.4); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.85rem; display: block; }
-.demo-input-field { display: flex; flex-direction: column; gap: 1.1rem; }
-.demo-input-item { display: flex; flex-direction: column; gap: 0.35rem; }
-.demo-input-item span { font-size: 0.68rem; font-family: 'JetBrains Mono', monospace; color: rgba(243,238,228,0.4); text-transform: uppercase; letter-spacing: 0.05em; }
-.demo-input-item strong { font-size: 0.88rem; color: var(--ivory); font-weight: 500; line-height: 1.5; }
-.demo-arrow { font-family: 'JetBrains Mono', monospace; color: var(--red); font-size: 1.6rem; text-align: center; }
-.demo-output { display: flex; flex-direction: column; gap: 0.65rem; }
-.demo-angulo { background: rgba(243,238,228,0.04); border: 1px solid rgba(243,238,228,0.1); border-left: 3px solid var(--red); border-radius: 8px; padding: 0.9rem 1.1rem; }
-.demo-angulo-tag { font-size: 0.66rem; font-family: 'JetBrains Mono', monospace; color: rgba(243,238,228,0.4); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.35rem; }
-.demo-angulo-titulo { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: 0.85rem; color: var(--ivory); line-height: 1.35; }
-.demo-footnote { text-align: center; font-size: 0.78rem; color: rgba(243,238,228,0.4); font-family: 'JetBrains Mono', monospace; margin-top: 2rem; }
-.demo-footnote span { color: var(--red); }
+/* COMUNIDAD */
+.founder-badge { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; background: var(--red); color: var(--ivory); padding: 0.4rem 0.95rem; border-radius: 100px; margin-bottom: 1.4rem; }
+.journey { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.75rem; margin-bottom: 3rem; }
+.step { border: 1px solid var(--ivory-line); border-radius: 12px; padding: 1.25rem 1.1rem; position: relative; }
+.step.open { border-color: var(--red); background: rgba(230,51,43,0.08); }
+.step-n { font-size: 0.68rem; color: var(--ivory-40); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.6rem; }
+.step.open .step-n { color: var(--red); }
+.step strong { display: block; font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: 1rem; margin-bottom: 0.35rem; }
+.step span.desc { font-size: 0.82rem; color: var(--ivory-60); line-height: 1.5; }
+.includes { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem 2.5rem; margin-bottom: 3.5rem; list-style: none; }
+.includes li { font-size: 0.95rem; color: var(--ivory-60); line-height: 1.6; padding-left: 1.6rem; position: relative; }
+.includes li::before { content: "→"; position: absolute; left: 0; color: var(--red); font-family: 'JetBrains Mono', monospace; }
+.includes li strong { color: var(--ivory); font-weight: 600; }
 
-.entregable-section { background: var(--panel); max-width: none; padding: 5rem 2.5rem; }
-.entregable-inner { max-width: 780px; margin: 0 auto; }
-.entregable-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-top: 0.5rem; }
-.entregable-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.35rem; }
-.entregable-item strong { display: block; font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: 0.98rem; color: var(--ink); margin-bottom: 0.35rem; }
-.entregable-item p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin: 0; }
+/* FORMS */
+.form-shell { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 3rem; align-items: start; }
+.form-pitch h3 { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: 1.5rem; line-height: 1.2; margin-bottom: 1rem; }
+.form-pitch p { font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem; }
+.dark .form-pitch p { color: var(--ivory-60); }
+.dark .form-pitch p strong { color: var(--ivory); }
+.form-pitch .fine { font-size: 0.72rem; }
+.dark .form-pitch .fine { color: var(--ivory-40); }
+form.lead { background: var(--surface); color: var(--ink); border-radius: 16px; padding: 1.9rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; border: 1px solid var(--border); }
+.field { display: flex; flex-direction: column; gap: 0.4rem; min-width: 0; }
+.field.full { grid-column: 1 / -1; }
+.field label, .field legend { font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+.field input, .field select, .field textarea { font: inherit; font-size: 1rem; color: var(--ink); background: var(--ivory); border: 1px solid var(--border); border-radius: 8px; padding: 0.75rem 0.85rem; width: 100%; }
+.field textarea { min-height: 88px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--red); outline-offset: 1px; border-color: transparent; }
+fieldset.field { border: none; }
+.checks { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.2rem; }
+.checks label { font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--ink); background: var(--ivory); border: 1px solid var(--border); border-radius: 100px; padding: 0.45rem 0.9rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem; user-select: none; }
+.checks input { accent-color: var(--red); width: auto; }
+.checks label:has(input:checked) { border-color: var(--red); background: var(--red-light); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+form.lead .btn { grid-column: 1 / -1; width: 100%; margin-top: 0.3rem; }
+form.lead .btn:disabled { opacity: 0.6; cursor: wait; transform: none; }
+.form-msg { grid-column: 1 / -1; font-size: 0.85rem; line-height: 1.5; }
+.form-msg:empty { display: none; }
+.form-msg.err { color: var(--red-dark); }
+.form-ok { display: none; background: var(--surface); color: var(--ink); border-radius: 16px; padding: 2.2rem 1.9rem; border: 2px solid var(--red); }
+.form-ok strong { display: block; font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: 1.35rem; margin-bottom: 0.6rem; }
+.form-ok p { font-size: 0.95rem; color: var(--muted); line-height: 1.65; }
+.done form.lead { display: none; }
+.done .form-ok { display: block; }
 
-.pricing-inner { max-width: 780px; margin: 0 auto; }
-.pricing { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem; }
-.plan { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem; display: flex; flex-direction: column; gap: 1rem; position: relative; }
-.plan.featured { border: 2px solid var(--red); }
-.plan-badge { position: absolute; top: -0.7rem; left: 1.25rem; font-size: 0.66rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.28rem 0.8rem; border-radius: 100px; background: var(--red); color: var(--ivory); }
-.plan-name { font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-.plan.featured .plan-name { color: var(--red); }
-.plan-price { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: 2rem; line-height: 1; color: var(--ink); }
-.plan-price sup { font-size: 0.9rem; vertical-align: super; font-family: 'DM Sans', sans-serif; font-weight: 400; }
-.plan-price span { font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; color: var(--muted); font-weight: 400; margin-left: 0.3rem; }
-.plan-referencia { font-size: 0.72rem; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
-.plan-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; flex-grow: 1; }
-.plan-btn { padding: 0.85rem; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 600; cursor: pointer; text-align: center; text-decoration: none; transition: all 0.2s; }
-.plan.featured .plan-btn { background: var(--red); color: var(--ivory); border: 1px solid var(--red); }
-.plan:not(.featured) .plan-btn { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
-.plan-btn:hover { transform: translateY(-1px); }
+/* SERVICIO */
+.service { background: var(--panel); }
+.service-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin: 1.25rem 0 1.4rem; }
+.service-list li { font-size: 0.92rem; color: var(--muted); padding-left: 1.4rem; position: relative; line-height: 1.55; }
+.service-list li::before { content: "✓"; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+.service-list li strong { color: var(--ink); }
+.service .form-pitch > p { color: var(--muted); }
 
-.faq-section { max-width: 700px; }
-.faq-list { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.5rem; }
-.faq-item { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-.faq-question { width: 100%; background: var(--surface); border: none; padding: 1.1rem 1.35rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--ink); gap: 1rem; transition: background 0.15s; }
-.faq-question:hover { background: var(--panel); }
-.faq-item.open .faq-question { background: var(--ink); color: var(--ivory); }
-.faq-icon { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--ivory); color: var(--ink); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; transition: transform 0.2s; border: 1px solid var(--border); }
-.faq-item.open .faq-icon { transform: rotate(45deg); background: rgba(243,238,228,0.15); color: var(--ivory); border-color: rgba(243,238,228,0.2); }
-.faq-answer { display: none; padding: 1rem 1.35rem; font-size: 0.875rem; color: var(--muted); line-height: 1.7; font-weight: 400; background: var(--surface); }
-.faq-item.open .faq-answer { display: block; }
+/* FAQ */
+.faq { max-width: 760px; margin: 0 auto; }
+.faq-list { display: flex; flex-direction: column; gap: 0.6rem; }
+details { border: 1px solid var(--border); border-radius: 12px; background: var(--surface); overflow: hidden; }
+summary { list-style: none; cursor: pointer; padding: 1.1rem 1.35rem; font-weight: 600; font-size: 0.95rem; display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-family: 'JetBrains Mono', monospace; font-size: 1rem; transition: transform 0.2s; flex-shrink: 0; }
+details[open] summary { background: var(--ink); color: var(--ivory); }
+details[open] summary::after { transform: rotate(45deg); }
+details p { padding: 1rem 1.35rem 1.2rem; font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
 
-.bottom-cta { background: var(--panel); padding: 4.5rem 2.5rem; text-align: center; }
-.bottom-cta-inner { max-width: 640px; margin: 0 auto; }
-.bottom-cta h2 { margin-bottom: 1rem; }
-.bottom-cta > .bottom-cta-inner > p { font-size: 0.95rem; color: var(--muted); line-height: 1.65; margin-bottom: 2rem; }
+footer { border-top: 1px solid var(--border); padding: 1.75rem 2.5rem; }
+footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+footer p, footer a { font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; color: var(--muted); }
+.footer-logo { font-family: 'Archivo Black', sans-serif; font-size: 0.85rem; }
 
-.mas-servicios { max-width: 700px; margin: 0 auto; padding: 3rem 2.5rem 4rem; text-align: center; border-top: 1px dashed var(--border); }
-.mas-servicios p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
-.mas-servicios a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
-
-footer { border-top: 1px solid var(--border); padding: 1.75rem 2.5rem; max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-.footer-logo { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: 0.85rem; color: var(--ink); }
-footer p { font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; color: var(--muted); }
-
+@media (max-width: 900px) {
+  .caps { grid-template-columns: 1fr 1fr; }
+  .journey { grid-template-columns: 1fr 1fr; }
+  .journey .step:first-child { grid-column: 1 / -1; }
+  .story .wrap, .form-shell { grid-template-columns: 1fr; gap: 2.5rem; }
+}
 @media (max-width: 700px) {
-  .hero, section { padding: 3.5rem 1.5rem; }
-  .results-section, .demo-section, .entregable-section { padding: 3.5rem 1.5rem; }
-  .demo-flow { grid-template-columns: 1fr; gap: 1rem; }
-  .demo-arrow { transform: rotate(90deg); }
-  .results-grid { grid-template-columns: 1fr 1fr; }
-  .entregable-list { grid-template-columns: 1fr; }
-  .about { grid-template-columns: 1fr; gap: 1.5rem; text-align: center; }
-  .about img { width: 160px; height: 200px; margin: 0 auto; }
-  .about-copy h2 { text-align: center; }
-  .pricing { grid-template-columns: 1fr; }
-  .trust-bar-inner { gap: 1rem; }
-  .bottom-cta { padding: 3.5rem 1.5rem; }
-  .mas-servicios { padding: 2.5rem 1.5rem 3rem; }
-  nav { padding: 1.1rem 1.5rem; }
-  footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  section { padding: 3.75rem 1rem; }
+  .hero { padding-top: 2.5rem; padding-bottom: 3.5rem; }
+  .hero .wrap { grid-template-columns: 1fr; gap: 2.25rem; }
+  .hero-photo { max-width: 280px; }
+  .hero-photo figcaption { left: auto; right: -0.5rem; }
+  .hero-ctas .btn { width: 100%; }
+  nav { padding: 0.9rem 1rem; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .proof-grid { grid-template-columns: 1fr 1fr; }
+  .stat-num { font-size: 1.6rem; }
+  .caps, .journey, .includes { grid-template-columns: 1fr; }
+  form.lead { grid-template-columns: 1fr; padding: 1.35rem; }
+  footer { padding: 1.5rem 1rem; }
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">Felipe Crespo<span>Método 101</span></div>
-  <a class="nav-cta" href="/metodo101/">Probar Método 101 →</a>
+  <a class="logo" href="/">Felipe Crespo<span>Marcas de comida que venden</span></a>
+  <div class="nav-links">
+    <a href="#que-hago">Qué hago</a>
+    <a href="#historia">Historia</a>
+    <a href="#hecho-contigo">Hecho contigo</a>
+    <a class="nav-cta" href="#comunidad">Cohorte fundadora →</a>
+  </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <span class="hero-tag">Solo para locales de comida</span>
-  <h1>Tu próximo anuncio de Meta, <em>listo en segundos.</em></h1>
-  <p>Escribes tu rubro y qué oferta quieres promocionar. Recibes <strong>3 versiones distintas del anuncio</strong> — con copy para pegar en Meta, prompt de imagen, prompt de lettering, adaptaciones para feed y story, y el gancho para el reel. Con el estilo de tu marca aplicado.</p>
-  <a class="cta" href="/metodo101/">Probar Método 101 · $29.990 CLP →</a>
-  <span class="cta-sub">🍽 Menos que una salida a comer para dos · Sin agendar nada</span>
+  <div class="wrap">
+    <div>
+      <span class="hero-tag">Builder en las trincheras · La Serena, Chile</span>
+      <h1>Construyo marcas de comida que venden. <em>Primero la mía.</em></h1>
+      <p>Soy <strong>Felipe Crespo</strong>. Empecé <strong>101homies</strong> vendiendo hamburguesas desde la cocina de mi casa. Hoy son dos locales. La marca, los anuncios y el camino desde que alguien ve el anuncio hasta que compra los armé y los corro yo. Ahora enseño ese sistema, y con algunos dueños lo armo mano a mano.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-red" href="#comunidad">Quiero entrar a la cohorte →</a>
+        <a class="btn btn-line" href="#hecho-contigo">Quiero que lo hagas conmigo</a>
+      </div>
+    </div>
+    <figure class="hero-photo">
+      <img src="https://res.cloudinary.com/dy8xhueb1/image/upload/f_auto/q_auto/Captura_de_pantalla_2026-05-16_a_la_s_1.59.14_p.m._pa1yqe.jpg" alt="Felipe Crespo, fundador de 101homies" width="400" height="500">
+      <figcaption>Fundador de <strong>101homies</strong><br>Dos locales · Cero agencias</figcaption>
+    </figure>
+  </div>
 </section>
 
-<div class="trust-bar">
-  <div class="trust-bar-inner">
-    <div class="trust-item">🍔 Probado en <strong>101homies</strong> — 22x ROAS este mes</div>
-    <div class="trust-item">📍 Diseñado para <strong>locales de comida</strong></div>
-    <div class="trust-item">⚡ Sin agendar, <strong>sin videollamadas</strong></div>
-  </div>
-</div>
-
-<section class="about-section">
-  <div class="about">
-    <img src="https://res.cloudinary.com/dy8xhueb1/image/upload/f_auto/q_auto/Captura_de_pantalla_2026-05-16_a_la_s_1.59.14_p.m._pa1yqe.jpg" alt="Felipe Crespo">
-    <div class="about-copy">
-      <div class="section-label" style="text-align:left;">Quién arma esto</div>
-      <h2>Aprendí Meta Ads haciendo <em>crecer mi propia hamburguesería.</em></h2>
-      <p>Soy <strong>Felipe Crespo</strong>. Empecé <strong>101homies</strong> vendiendo hamburguesas desde mi casa. Hoy tenemos 2 sucursales — y llegamos ahí en menos de 2 años, corriendo yo mismo los anuncios.</p>
-      <p>Método 101 es el mismo proceso que uso cada vez que lanzo una burger nueva. Adaptado para que lo use cualquier local de comida.</p>
+<!-- PRUEBA -->
+<section class="proof dark">
+  <div class="wrap">
+    <div class="proof-head">
+      <div>
+        <div class="label">Números reales, no promesas</div>
+        <h2>Una campaña de un mes en 101homies</h2>
+      </div>
+      <span class="proof-note mono">Hamburguesa del mes · Julio 2026</span>
+    </div>
+    <div class="proof-grid">
+      <div class="stat"><div class="stat-num">22x</div><div class="stat-label">vendimos $22 por cada $1 que pusimos en anuncios</div></div>
+      <div class="stat"><div class="stat-num">104</div><div class="stat-label">compras hechas desde el anuncio</div></div>
+      <div class="stat"><div class="stat-num">&lt;$1.000</div><div class="stat-label">nos costó en anuncios cada venta</div></div>
+      <div class="stat"><div class="stat-num">$114k</div><div class="stat-label">CLP invertidos en total ese mes</div></div>
     </div>
   </div>
 </section>
 
-<section class="results-section">
-  <div class="results-inner">
-    <div class="section-label">Campaña real de este mes</div>
-    <h2>Burger del mes en 101homies — <em>julio 2026</em></h2>
-    <p class="section-intro">Los números de la campaña que corrí este mes con exactamente el mismo método que te entrega esta herramienta.</p>
-    <div class="results-grid">
-      <div class="result-card">
-        <div class="result-num">22x</div>
-        <div class="result-label">ROAS con valor de compra</div>
-      </div>
-      <div class="result-card">
-        <div class="result-num">104</div>
-        <div class="result-label">Compras generadas</div>
-      </div>
-      <div class="result-card">
-        <div class="result-num">&lt;$1.000</div>
-        <div class="result-label">Costo por compra</div>
-      </div>
-      <div class="result-card">
-        <div class="result-num">$114k</div>
-        <div class="result-label">CLP de pauta invertida</div>
-      </div>
+<!-- QUÉ HAGO -->
+<section id="que-hago">
+  <div class="wrap">
+    <div class="label">Qué hago</div>
+    <h2>Todo lo que hace que un cliente <em>te elija, te compre y vuelva.</em></h2>
+    <p class="intro">No vengo de una agencia. Todo esto lo aprendí haciéndolo en mis propios negocios, con mi plata en juego. Por eso cada cosa de esta lista está probada en un local de verdad antes de ofrecerla.</p>
+    <div class="caps">
+      <article class="cap">
+        <span class="cap-num mono">01</span>
+        <h3>Asesoría de marca</h3>
+        <p>A quién le vendes, por qué te eligen a ti y qué no vas a hacer nunca. Si eso no está claro, cualquier anuncio es plata tirada.</p>
+        <span class="cap-proof mono">Probado en: 101homies</span>
+      </article>
+      <article class="cap">
+        <span class="cap-num mono">02</span>
+        <h3>Desarrollo de marca</h3>
+        <p>Nombre, identidad, colores, tono de voz, frase de marca y carta. Una marca que se reconoce sin ver el logo.</p>
+        <span class="cap-proof mono">Probado en: 101homies · HSTL FUEL</span>
+      </article>
+      <article class="cap">
+        <span class="cap-num mono">03</span>
+        <h3>Anuncios en Meta</h3>
+        <p>Instagram y Facebook: cuentas, píxel, públicos, presupuesto y optimización semana a semana. Cada peso se mide contra ventas, no contra "me gusta".</p>
+        <span class="cap-proof mono">Probado en: 101homies · clientes Método 101</span>
+      </article>
+      <article class="cap">
+        <span class="cap-num mono">04</span>
+        <h3>Campañas y contenido</h3>
+        <p>Lanzamientos, hamburguesa del mes, reels y guiones. Tres ángulos por campaña para saber rápido cuál vende y matar el resto.</p>
+        <span class="cap-proof mono">Probado en: 101homies</span>
+      </article>
+      <article class="cap">
+        <span class="cap-num mono">05</span>
+        <h3>Embudos de venta</h3>
+        <p>El camino completo: anuncio → WhatsApp o web → primera compra → segunda compra. Con los números a la vista para saber dónde se cae la gente.</p>
+        <span class="cap-proof mono">Probado en: 101homies</span>
+      </article>
+      <article class="cap">
+        <span class="cap-num mono">06</span>
+        <h3>Números y operación</h3>
+        <p>Costo real por plato, cuánto se te va en insumos y sueldos, y procesos para que el local no dependa de ti. La publicidad no arregla un local que pierde plata.</p>
+        <span class="cap-proof mono">Probado en: 101homies · 2 locales</span>
+      </article>
     </div>
-    <p class="results-footnote">101homies · Julio 2026</p>
   </div>
 </section>
 
-<section class="demo-section">
-  <div class="demo-inner">
-    <div class="section-label">Cómo se ve un resultado real</div>
-    <h2>Este mes hicimos <em>la burger del mes</em></h2>
-    <p class="section-intro">Esto es exactamente lo que escribí en el generador para armar la campaña de arriba.</p>
-    <div class="demo-flow">
-      <div class="demo-input">
-        <span class="demo-input-label">Lo que escribes tú</span>
-        <div class="demo-input-field">
-          <div class="demo-input-item"><span>Rubro</span><strong>Hamburguesería, especialidad smash</strong></div>
-          <div class="demo-input-item"><span>Oferta</span><strong>Burger del mes: doble carne, cheddar americano, cebolla morada en cubos y salsa trufada. Con papas y bebida a $11.900.</strong></div>
+<!-- HISTORIA -->
+<section class="story" id="historia">
+  <div class="wrap">
+    <div class="story-copy">
+      <div class="label">De dónde sale esto</div>
+      <h2>No lo leí en un libro. <em>Lo pagué con mi plata.</em></h2>
+      <p>101homies partió como una hamburguesa smash hecha en mi casa. Sin inversionistas y sin agencia. Cada anuncio que funcionó y cada uno que se fue a la basura lo pagué yo.</p>
+      <p>Hoy tenemos <strong>dos locales</strong>: Cuatro Esquinas en La Serena y JJ Pérez en Coquimbo. Llegamos ahí en <strong>menos de dos años</strong>, con los anuncios corridos por mí.</p>
+      <p>Lo que enseño es lo mismo que uso cada semana en mis locales. Si no funciona ahí, no lo ofrezco.</p>
+    </div>
+    <ol class="timeline">
+      <li><div class="when mono">El inicio</div><strong>Desde la cocina de la casa</strong><span class="desc">Primeras ventas por Instagram y WhatsApp. Marca, fotos y anuncios hechos por mí.</span></li>
+      <li><div class="when mono">Local 1</div><strong>Cuatro Esquinas, La Serena</strong><span class="desc">"Simple, Better, Burger." Una marca con identidad propia, no otra hamburguesería más.</span></li>
+      <li><div class="when mono">Local 2</div><strong>JJ Pérez, Coquimbo</strong><span class="desc">Segundo local en menos de dos años. El sistema ya no depende de un solo lugar.</span></li>
+      <li class="now"><div class="when mono">Ahora</div><strong>Método 101</strong><span class="desc">El mismo sistema, ordenado para que otros dueños de locales de comida lo apliquen.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- COMUNIDAD -->
+<section class="dark" id="comunidad">
+  <div class="wrap">
+    <span class="founder-badge">Cohorte fundadora · 30 cupos</span>
+    <div class="label">Comunidad Método 101</div>
+    <h2>Para dueños de locales de comida<br>que se cansaron de <em>adivinar.</em></h2>
+    <p class="intro">Una comunidad con un camino claro. Primero ves dónde se te está yendo la plata. Después ordenas el local, la marca, la llegada de clientes y la recompra, en ese orden. Cada paso con planillas, ejemplos de mis locales y alguien a quien preguntarle.</p>
+
+    <div class="journey">
+      <div class="step open"><div class="step-n mono">Módulo 0 · Abre día 1</div><strong>Ver la fuga</strong><span class="desc">Tu costo real por plato, los 3 números que mandan y un plan de 30 días.</span></div>
+      <div class="step open"><div class="step-n mono">Etapa 1 · Abre día 1</div><strong>Operaciones</strong><span class="desc">Que el local no dependa de ti.</span></div>
+      <div class="step"><div class="step-n mono">Etapa 2 · Mes 2</div><strong>Marca</strong><span class="desc">Que te elijan.</span></div>
+      <div class="step"><div class="step-n mono">Etapa 3 · Mes 3</div><strong>Captación</strong><span class="desc">Que lleguen los clientes correctos.</span></div>
+      <div class="step"><div class="step-n mono">Etapa 4 · Mes 4</div><strong>Fidelización</strong><span class="desc">Que vuelvan.</span></div>
+    </div>
+
+    <ul class="includes">
+      <li><strong>Un live grande al mes</strong> donde muestro campañas reales de mis locales, con sus números, y qué funcionó.</li>
+      <li><strong>Un hilo semanal de preguntas</strong> donde respondo lo que te esté trabando esa semana.</li>
+      <li><strong>El generador de anuncios Método 101 incluido</strong>, actualizado cada mes con los ángulos que ganaron. Ya no se vende por separado.</li>
+      <li><strong>Planillas listas</strong> para calcular tu costo por plato, tus números del mes y tu plan de acción.</li>
+    </ul>
+
+    <div class="form-shell">
+      <div class="form-pitch">
+        <h3>Por qué entrar como fundador</h3>
+        <p>Los primeros 30 entran a <strong>precio de fundador, congelado mientras sigas dentro</strong>. Cuando se abra al público, el precio sube.</p>
+        <p>A cambio te pido una cosa: que apliques y me cuentes qué pasó. Lo que aprendamos con la primera cohorte le da forma a todo lo que viene.</p>
+        <p class="fine mono">Anotarte no te compromete a nada. La lista se entera primero de la fecha y el precio.</p>
+      </div>
+      <div>
+        <form class="lead" data-tipo="cohorte" novalidate>
+          <div class="field"><label for="c-nombre">Nombre</label><input id="c-nombre" name="nombre" autocomplete="name" required></div>
+          <div class="field"><label for="c-whatsapp">WhatsApp</label><input id="c-whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="+56 9 ..." required></div>
+          <div class="field full"><label for="c-email">Correo</label><input id="c-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="c-negocio">Nombre de tu local</label><input id="c-negocio" name="negocio" autocomplete="organization"></div>
+          <div class="field"><label for="c-ciudad">Ciudad</label><input id="c-ciudad" name="ciudad" autocomplete="address-level2"></div>
+          <div class="field full">
+            <label for="c-problema">¿Qué es lo que más te está costando hoy?</label>
+            <select id="c-problema" name="problema">
+              <option value="">Elige una</option>
+              <option>Vendo, pero no me queda plata a fin de mes</option>
+              <option>El local depende de mí para todo</option>
+              <option>No me llegan clientes nuevos</option>
+              <option>Los clientes vienen una vez y no vuelven</option>
+              <option>Pongo plata en anuncios y no sé si sirve</option>
+              <option>Todavía no abro, estoy armando el negocio</option>
+            </select>
+          </div>
+          <div class="hp" aria-hidden="true"><label>Web de tu empresa<input name="empresa_web" tabindex="-1" autocomplete="off"></label></div>
+          <button class="btn btn-red" type="submit">Anotarme en la cohorte fundadora →</button>
+          <p class="form-msg" role="status" aria-live="polite"></p>
+        </form>
+        <div class="form-ok" role="status">
+          <strong>Listo, quedaste en la lista.</strong>
+          <p>Te escribo antes de abrir, con la fecha y el precio de fundador. Mientras tanto, anda pensando cuánto vendiste el último mes cerrado. Lo vas a necesitar en el Módulo 0.</p>
         </div>
       </div>
-      <div class="demo-arrow">→</div>
-      <div class="demo-output">
-        <div class="demo-angulo">
-          <div class="demo-angulo-tag">FOMO · Urgencia</div>
-          <div class="demo-angulo-titulo">"Solo julio. En agosto vuelve el próximo año."</div>
-        </div>
-        <div class="demo-angulo">
-          <div class="demo-angulo-tag">Pertenencia · Revelar</div>
-          <div class="demo-angulo-titulo">"La trufa la echamos al momento. Míralo."</div>
-        </div>
-        <div class="demo-angulo">
-          <div class="demo-angulo-tag">Bienestar · Deseo</div>
-          <div class="demo-angulo-titulo">"El cheddar americano se derrite sobre la doble carne."</div>
-        </div>
-      </div>
-    </div>
-    <div class="demo-footnote"><span>+</span> Cada versión trae el copy completo, prompt de imagen, prompt de lettering, adaptaciones y gancho de reel.</div>
-  </div>
-</section>
-
-<section class="entregable-section">
-  <div class="entregable-inner">
-    <div class="section-label">Qué recibes por estrategia</div>
-    <h2>Tres versiones del anuncio, con <em>todo el detalle</em></h2>
-    <p class="section-intro">No un copy suelto. Todo lo que necesita tu diseñador (o tú con Gemini) para armar el anuncio y publicarlo.</p>
-    <div class="entregable-list">
-      <div class="entregable-item">
-        <strong>Copy para Meta</strong>
-        <p>Dos títulos y dos textos por versión, con el tono de tu marca.</p>
-      </div>
-      <div class="entregable-item">
-        <strong>Prompt de imagen</strong>
-        <p>Instrucciones para generar la foto en Gemini o ChatGPT, con la estética de tu marca.</p>
-      </div>
-      <div class="entregable-item">
-        <strong>Prompt de lettering</strong>
-        <p>Descripción del texto sobre la gráfica: qué frase, tipografía, jerarquía y color.</p>
-      </div>
-      <div class="entregable-item">
-        <strong>Adaptaciones de formato</strong>
-        <p>Cómo cambia la composición al pasar de feed (4:5) a story o reel (9:16).</p>
-      </div>
-      <div class="entregable-item" style="grid-column: 1 / -1;">
-        <strong>Gancho de reel</strong>
-        <p>La frase o acción del primer segundo para detener el scroll de tu cliente.</p>
-      </div>
     </div>
   </div>
 </section>
 
-<section class="pricing-section">
-  <div class="pricing-inner">
-    <div class="section-label">Precios</div>
-    <h2>Empieza por <em>una</em> o carga acceso por el año</h2>
-    <p class="section-intro">Sin suscripción sorpresa. Pagas una vez y usas cuando quieras.</p>
-    <div class="pricing">
-      <div class="plan">
-        <div>
-          <div class="plan-name">3 estrategias</div>
-          <div class="plan-price"><sup>$</sup>29.990 <span>CLP</span></div>
-          <div class="plan-referencia">Sin vencimiento</div>
+<!-- HECHO CONTIGO -->
+<section class="service" id="hecho-contigo">
+  <div class="wrap form-shell">
+    <div class="form-pitch">
+      <div class="label">Hecho contigo</div>
+      <h2>¿Prefieres que lo <em>armemos juntos?</em></h2>
+      <p>Para negocios que ya venden y quieren crecer sin aprenderlo todo desde cero. Me meto en tu negocio y armamos el sistema completo, o la parte que te falte.</p>
+      <ul class="service-list">
+        <li><strong>Marca:</strong> posicionamiento, identidad, tono y carta.</li>
+        <li><strong>Anuncios en Meta:</strong> montaje, presupuesto y optimización.</li>
+        <li><strong>Campañas:</strong> lanzamientos, contenido y creativos.</li>
+        <li><strong>Embudo de venta:</strong> del anuncio a la compra y a la segunda compra.</li>
+        <li><strong>Números:</strong> costo por plato y control del mes.</li>
+      </ul>
+      <p class="fine mono">Tomo pocos proyectos, porque los hago yo. Reviso cada postulación y te respondo si calzamos, y si no, también.</p>
+    </div>
+    <div>
+      <form class="lead" data-tipo="servicio" novalidate>
+        <div class="field"><label for="s-nombre">Nombre</label><input id="s-nombre" name="nombre" autocomplete="name" required></div>
+        <div class="field"><label for="s-whatsapp">WhatsApp</label><input id="s-whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="+56 9 ..." required></div>
+        <div class="field full"><label for="s-email">Correo</label><input id="s-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="s-negocio">Negocio</label><input id="s-negocio" name="negocio" autocomplete="organization"></div>
+        <div class="field"><label for="s-rubro">Rubro</label><input id="s-rubro" name="rubro" placeholder="Ej: sushi, cafetería, pizzería"></div>
+        <div class="field"><label for="s-ciudad">Ciudad</label><input id="s-ciudad" name="ciudad" autocomplete="address-level2"></div>
+        <div class="field">
+          <label for="s-facturacion">Venta mensual aprox.</label>
+          <select id="s-facturacion" name="facturacion">
+            <option value="">Elige un rango</option>
+            <option>Todavía no vendo</option>
+            <option>Menos de $5 millones</option>
+            <option>$5 a $15 millones</option>
+            <option>$15 a $40 millones</option>
+            <option>Más de $40 millones</option>
+          </select>
         </div>
-        <div class="plan-desc">3 estrategias completas — cada una con 3 versiones del anuncio, prompts, adaptaciones y gancho. No caducan.</div>
-        <a class="plan-btn" href="/metodo101/">Empezar por $29.990 →</a>
-      </div>
-      <div class="plan featured">
-        <div class="plan-badge">Mejor valor</div>
-        <div>
-          <div class="plan-name">Acceso anual</div>
-          <div class="plan-price"><sup>$</sup>149.990 <span>CLP</span></div>
-          <div class="plan-referencia">$12.499 al mes efectivo</div>
-        </div>
-        <div class="plan-desc">Estrategias ilimitadas por 12 meses. Ideal si lanzas ofertas o cambias tu producto seguido.</div>
-        <a class="plan-btn" href="/metodo101/">Ir al acceso anual →</a>
+        <fieldset class="field full">
+          <legend>¿Qué necesitas?</legend>
+          <div class="checks">
+            <label><input type="checkbox" name="servicios" value="Asesoría de marca">Asesoría de marca</label>
+            <label><input type="checkbox" name="servicios" value="Desarrollo de marca">Desarrollo de marca</label>
+            <label><input type="checkbox" name="servicios" value="Anuncios en Meta">Anuncios en Meta</label>
+            <label><input type="checkbox" name="servicios" value="Campañas y contenido">Campañas y contenido</label>
+            <label><input type="checkbox" name="servicios" value="Embudo de venta">Embudo de venta</label>
+            <label><input type="checkbox" name="servicios" value="Números y operación">Números y operación</label>
+          </div>
+        </fieldset>
+        <div class="field full"><label for="s-problema">Cuéntame en dos líneas dónde estás y adónde quieres llegar</label><textarea id="s-problema" name="problema"></textarea></div>
+        <div class="hp" aria-hidden="true"><label>Web de tu empresa<input name="empresa_web" tabindex="-1" autocomplete="off"></label></div>
+        <button class="btn btn-red" type="submit">Enviar postulación →</button>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+      </form>
+      <div class="form-ok" role="status">
+        <strong>Recibido.</strong>
+        <p>Leo cada postulación yo mismo. Si calzamos, te escribo por WhatsApp para una conversación corta. Si no, te lo digo igual.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="faq-section">
-  <div class="section-label">Preguntas frecuentes</div>
-  <h2>Lo que suelen preguntar</h2>
-  <div class="faq-list">
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">¿Qué recibo exactamente en cada estrategia?<span class="faq-icon">+</span></button>
-      <div class="faq-answer">3 versiones del anuncio, cada una enfocada en un motivador distinto (deseo, urgencia, revelar). Cada versión trae: dos títulos y dos textos listos para pegar en Meta, un prompt para generar la foto en Gemini o ChatGPT, un prompt separado para el lettering sobre la gráfica, adaptaciones para feed (4:5) y story (9:16), y el gancho de reel.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">¿Por qué solo para locales de comida?<span class="faq-icon">+</span></button>
-      <div class="faq-answer">Porque probé este método corriendo mi propia hamburguesería. Lo mismo que uso mes a mes en 101homies para lanzar una burger nueva o cualquier oferta. Al enfocarme en un solo rubro, el método sabe mejor qué dolores importan, qué palabras venden y qué imágenes dan hambre — cosas que en un método genérico se pierden.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">¿Funciona fuera de Chile?<span class="faq-icon">+</span></button>
-      <div class="faq-answer">Sí. El método está pensado para locales de comida hispanohablantes en cualquier país. El pago está en CLP (Mercado Pago acepta tarjetas internacionales), y el generador adapta el tono al perfil que configures — incluyendo los modismos locales si los pones en tu tono de voz.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">¿Necesito saber de marketing o de diseño?<span class="faq-icon">+</span></button>
-      <div class="faq-answer">No. Solo necesitas saber tu rubro específico y qué oferta quieres promocionar. La primera vez te pedimos 90 segundos para configurar tu marca (paleta, tipografía, tono). Después escribes rubro + oferta y en segundos tienes tu estrategia lista.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">¿Esto es una campaña completa de Meta Ads?<span class="faq-icon">+</span></button>
-      <div class="faq-answer">No. Método 101 te entrega la base creativa — el copy y las instrucciones para las gráficas. Después tú lo subes a Meta y lo pones a correr. Si prefieres que alguien maneje la campaña por ti (setup, optimización, pauta), abajo tienes el link a mi servicio de Media Buying.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">¿Cómo pago y cuándo lo recibo?<span class="faq-icon">+</span></button>
-      <div class="faq-answer">Pagas con tarjeta o Mercado Pago. Apenas se confirma el pago tienes acceso al generador — no hay espera, no hay correo intermedio. Configuras tu marca una vez, escribes rubro + oferta y en segundos tienes tu estrategia.</div>
+<!-- FAQ -->
+<section>
+  <div class="faq">
+    <div class="label">Preguntas frecuentes</div>
+    <h2>Lo que suelen preguntar</h2>
+    <div class="faq-list">
+      <details><summary>¿La comunidad es solo para locales de comida?</summary><p>Sí. Hamburgueserías, sushi, pizzerías, cafeterías, dark kitchens, carros. Al enfocarme en un solo rubro, todo lo que ves (números, ejemplos, anuncios) aplica directo a tu local, sin tener que "traducirlo".</p></details>
+      <details><summary>¿Y "hecho contigo"? ¿Trabajas con otros rubros?</summary><p>Mi foco es comida y consumo, porque ahí tengo resultados propios para mostrar. Si tu negocio es de otro rubro, postula igual. Si veo que no te puedo ayudar, te lo digo.</p></details>
+      <details><summary>¿Cuándo abre la cohorte y cuánto cuesta?</summary><p>La fecha y el precio de fundador se anuncian primero a la lista. Los 30 fundadores mantienen ese precio mientras sigan dentro, aunque después suba para el resto.</p></details>
+      <details><summary>¿Tengo que ver todo de una?</summary><p>No. Abre con el Módulo 0 y la Etapa 1, y cada mes se estrena la siguiente etapa. Avanzas con tu local en paralelo, un paso a la vez, sin 30 horas de video acumuladas.</p></details>
+      <details><summary>Ya compré el generador de Método 101. ¿Qué pasa con mi acceso?</summary><p>Sigue igual. Entras con el mismo link de acceso que te llegó al comprar. El generador ya no se vende por separado: desde ahora viene incluido en la comunidad.</p></details>
+      <details><summary>¿Necesito saber de marketing?</summary><p>No. Necesitas conocer tu local y estar dispuesto a mirar tus números. Lo demás se aprende aplicando, con ejemplos de mis locales.</p></details>
     </div>
   </div>
-</section>
-
-<section class="bottom-cta">
-  <div class="bottom-cta-inner">
-    <h2>Deja de <em>improvisar</em> tu próximo anuncio.</h2>
-    <p>Por $29.990 CLP tienes 3 estrategias completas listas para publicar. Sin agendar, sin videollamadas, sin curso.</p>
-    <a class="cta" href="/metodo101/">Probar Método 101 →</a>
-    <span class="cta-sub">🍽 Menos que una salida a comer para dos</span>
-  </div>
-</section>
-
-<section class="mas-servicios">
-  <p>¿Prefieres que revise tu caso 1 a 1, o que yo maneje tus anuncios directamente? <a href="https://wa.me/56900000000?text=Hola%20Felipe%2C%20quiero%20saber%20m%C3%A1s%20sobre%20la%20Consulta%20Estrat%C3%A9gica%20o%20Media%20Buying." target="_blank" rel="noopener">Escríbeme por WhatsApp →</a></p>
 </section>
 
 <footer>
-  <div class="footer-logo">Felipe Crespo</div>
-  <p>© 2026 · Método 101</p>
+  <div class="wrap">
+    <span class="footer-logo">Felipe Crespo</span>
+    <p>© 2026 · Método 101 · <a href="https://www.instagram.com/pipecrespos/" target="_blank" rel="noopener">@pipecrespos</a></p>
+  </div>
 </footer>
 
 <script>
-function toggleFaq(btn) {
-  const item = btn.parentElement;
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
-}
+const LEADS_URL = 'https://leads-felipecrespo.fcrespo.workers.dev/lead';
+
+// Guarda los UTM de la visita para saber de dónde llegó cada lead.
+const qs = new URLSearchParams(location.search);
+const origen = {
+  utm_source: qs.get('utm_source') || '',
+  utm_medium: qs.get('utm_medium') || '',
+  utm_campaign: qs.get('utm_campaign') || '',
+  referrer: document.referrer || ''
+};
+
+const ERRORES = {
+  falta_nombre: 'Falta tu nombre.',
+  email_invalido: 'Revisa tu correo, parece que tiene un error.',
+  whatsapp_invalido: 'Revisa tu WhatsApp. Escríbelo con código de país, por ejemplo +56 9 1234 5678.'
+};
+
+document.querySelectorAll('form.lead').forEach(form => {
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const msg = form.querySelector('.form-msg');
+    const btn = form.querySelector('button[type="submit"]');
+    const data = { tipo: form.dataset.tipo, ...origen };
+    for (const [k, v] of new FormData(form).entries()) {
+      if (k === 'servicios') (data.servicios ||= []).push(v);
+      else data[k] = v;
+    }
+
+    msg.className = 'form-msg';
+    msg.textContent = '';
+    if (!data.nombre?.trim() || !data.email?.trim() || !data.whatsapp?.trim()) {
+      msg.className = 'form-msg err';
+      msg.textContent = 'Nombre, WhatsApp y correo son obligatorios.';
+      return;
+    }
+
+    const label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    try {
+      const res = await fetch(LEADS_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || !out.ok) throw new Error(out.error || 'error');
+      form.parentElement.classList.add('done');
+      if (window.fbq) fbq('track', 'Lead', { content_name: data.tipo });
+    } catch (e) {
+      msg.className = 'form-msg err';
+      msg.textContent = ERRORES[e.message] || 'No se pudo enviar. Revisa tu conexión e intenta de nuevo.';
+      btn.disabled = false;
+      btn.textContent = label;
+    }
+  });
+});
 </script>
 </body>
 </html>
